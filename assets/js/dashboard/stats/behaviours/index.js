@@ -409,7 +409,7 @@ function Behaviours({ importedDataInView, setMode, mode }) {
   function noDataYet() {
     return (
       <div className="flex-1 flex items-center justify-center font-medium text-gray-500 dark:text-gray-400">
-        No data yet
+        Sem dados ainda
       </div>
     )
   }

@@ -53,12 +53,12 @@ defmodule PlausibleWeb.Live.RegisterForm do
     </div>
 
     <div class="w-full max-w-md mx-auto bg-white dark:bg-gray-800 shadow-md rounded-sm px-8 py-6 mb-4 mt-8">
-      <h2 class="text-xl font-black dark:text-gray-100">Invitation expired</h2>
+      <h2 class="text-xl font-black dark:text-gray-100">Convite expirado</h2>
 
       <p class="mt-4">
-        Your invitation has expired or been revoked. Please request fresh one or you can
-        <.styled_link href={Routes.auth_path(@socket, :register_form)}>sign up</.styled_link>
-        for a 30-day unlimited free trial without an invitation.
+        Seu convite expirou ou foi revogado. Solicite um novo ou
+        <.styled_link href={Routes.auth_path(@socket, :register_form)}>cadastre-se</.styled_link>
+        para um período de teste gratuito de 30 dias sem convite.
       </p>
     </div>
     """
@@ -69,13 +69,13 @@ defmodule PlausibleWeb.Live.RegisterForm do
     <div class="mx-auto text-center dark:text-gray-300">
       <h1 class="text-3xl font-black">
         <%= if ce?() or @live_action == :register_from_invitation_form do %>
-          Register your {Plausible.product_name()} account
+          Registre sua conta {Plausible.product_name()}
         <% else %>
-          Register your 30-day free trial
+          Registre seu período de teste gratuito de 30 dias
         <% end %>
       </h1>
       <div class="text-xl font-medium mt-2">
-        Set up privacy-friendly analytics with just a few clicks
+        Configure análises de dados com privacidade em poucos cliques
       </div>
     </div>
 
@@ -92,7 +92,7 @@ defmodule PlausibleWeb.Live.RegisterForm do
 
     <.focus_box>
       <:title>
-        Enter your details
+        Insira seus dados
       </:title>
 
       <.form
@@ -124,7 +124,7 @@ defmodule PlausibleWeb.Live.RegisterForm do
         <div class="my-4">
           <div class="flex justify-between">
             <label for={f[:password].id} class="block font-medium text-gray-700 dark:text-gray-300">
-              Password
+              Senha
             </label>
             <.password_length_hint minimum={12} field={f[:password]} />
           </div>
@@ -143,7 +143,7 @@ defmodule PlausibleWeb.Live.RegisterForm do
             for={f[:password_confirmation].id}
             class="block font-medium text-gray-700 dark:text-gray-300"
           >
-            Confirm password
+            Confirmar senha
           </label>
           <div class="mt-1">
             <.input
@@ -183,18 +183,18 @@ defmodule PlausibleWeb.Live.RegisterForm do
 
         <% submit_text =
           if ce?() or @invitation do
-            "Create my account"
+            "Criar minha conta"
           else
-            "Start my free trial"
+            "Iniciar meu período de teste"
           end %>
         <.button id="register" disabled={@disable_submit} type="submit" class="mt-4 w-full">
           {submit_text}
         </.button>
 
         <p class="text-center text-gray-600 dark:text-gray-500 mt-4">
-          Already have an account?
+          Já tem uma conta?
           <.styled_link href="/login">
-            Log in
+            Entrar
           </.styled_link>
         </p>
       </.form>
@@ -206,7 +206,7 @@ defmodule PlausibleWeb.Live.RegisterForm do
     ~H"""
     <div class="my-4">
       <label for={@field.id} class="block font-medium text-gray-700 dark:text-gray-300">
-        Full name
+        Nome completo
       </label>
       <div class="mt-1">
         <.input
@@ -252,7 +252,7 @@ defmodule PlausibleWeb.Live.RegisterForm do
         <label for={@field.id} class="block font-medium text-gray-700 dark:text-gray-300">
           Email
         </label>
-        <p class="text-xs text-gray-500 mt-1">No spam, guaranteed.</p>
+        <p class="text-xs text-gray-500 mt-1">Sem spam, garantido.</p>
       </div>
       <div class="mt-1">
         <.input

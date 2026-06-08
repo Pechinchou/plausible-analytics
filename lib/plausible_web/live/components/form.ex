@@ -330,7 +330,7 @@ defmodule PlausibleWeb.Live.Components.Form do
     assigns = assign(assigns, :class, final_class)
 
     ~H"""
-    <p class={@class}>Min {@minimum} characters</p>
+    <p class={@class}>Mín. {@minimum} caracteres</p>
     """
   end
 
