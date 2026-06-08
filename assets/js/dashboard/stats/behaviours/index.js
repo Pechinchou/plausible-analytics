@@ -585,7 +585,7 @@ function Behaviours({ importedDataInView, setMode, mode }) {
               </TabButton>
             )}
           </TabWrapper>
-          {isRealtime() && <Pill className="-mt-1">last 30min</Pill>}
+          {isRealtime() && <Pill className="-mt-1">últimos 30min</Pill>}
           {renderImportedQueryUnsupportedWarning()}
         </div>
         {![Mode.FUNNELS, Mode.EXPLORATION].includes(mode) && (

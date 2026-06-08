@@ -104,16 +104,16 @@ defmodule PlausibleWeb.LayoutView do
     options = %{
       "Account" =>
         [
-          %{key: "Preferences", value: "preferences", icon: :cog_6_tooth},
-          %{key: "Security", value: "security", icon: :lock_closed},
+          %{key: "Preferências", value: "preferences", icon: :cog_6_tooth},
+          %{key: "Segurança", value: "security", icon: :lock_closed},
           if(ee?() and not Teams.setup?(current_team),
-            do: %{key: "Subscription", value: "billing/subscription", icon: :subscription}
+            do: %{key: "Assinatura", value: "billing/subscription", icon: :subscription}
           ),
           if(not Teams.setup?(current_team),
-            do: %{key: "API keys", value: "api-keys", icon: :api_keys}
+            do: %{key: "Chaves de API", value: "api-keys", icon: :api_keys}
           ),
           if(Plausible.Users.type(assigns.current_user) == :standard,
-            do: %{key: "Danger zone", value: "danger-zone", icon: :exclamation_triangle}
+            do: %{key: "Zona de perigo", value: "danger-zone", icon: :exclamation_triangle}
           )
         ]
         |> Enum.reject(&is_nil/1)
@@ -124,12 +124,12 @@ defmodule PlausibleWeb.LayoutView do
         options,
         "Team",
         [
-          %{key: "General", value: "team/general", icon: :adjustments_horizontal},
+          %{key: "Geral", value: "team/general", icon: :adjustments_horizontal},
           if(ee?() and current_team_role in Plausible.Billing.allowed_roles(),
-            do: %{key: "Subscription", value: "billing/subscription", icon: :subscription}
+            do: %{key: "Assinatura", value: "billing/subscription", icon: :subscription}
           ),
           if(current_team_role in [:owner, :billing, :admin, :editor],
-            do: %{key: "API keys", value: "api-keys", icon: :api_keys}
+            do: %{key: "Chaves de API", value: "api-keys", icon: :api_keys}
           ),
           if(
             ee?() and current_team_role == :owner and
@@ -138,8 +138,8 @@ defmodule PlausibleWeb.LayoutView do
               key: "Single Sign-On",
               icon: :cloud,
               value: [
-                %{key: "Configuration", value: "sso/general"},
-                %{key: "Sessions", value: "sso/sessions"}
+                %{key: "Configuração", value: "sso/general"},
+                %{key: "Sessões", value: "sso/sessions"}
               ]
             }
           ),
@@ -152,7 +152,7 @@ defmodule PlausibleWeb.LayoutView do
             }
           ),
           if(current_team_role == :owner,
-            do: %{key: "Danger zone", value: "team/delete", icon: :exclamation_triangle}
+            do: %{key: "Zona de perigo", value: "team/delete", icon: :exclamation_triangle}
           )
         ]
         |> Enum.reject(&is_nil/1)

@@ -47,7 +47,7 @@ export default function CurrentVisitors({ className = '' }) {
             {currentVisitors}
             <span className="hidden lg:inline">
               {' '}
-              visitante{currentVisitors === 1 ? '' : 's'} atual{currentVisitors === 1 ? '' : 'is'}
+              visitante{currentVisitors === 1 ? '' : 's'} {currentVisitors === 1 ? 'atual' : 'atuais'}
             </span>
           </div>
         </AppNavigationLink>

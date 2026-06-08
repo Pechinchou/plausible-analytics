@@ -1,7 +1,7 @@
 <.settings_tiles>
   <.tile :if={Plausible.Users.type(@current_user) == :standard}>
     <:title>
-      <a id="update-name">Your name</a>
+      <a id="update-name">Seu nome</a>
     </:title>
     <.form
       :let={f}
@@ -9,26 +9,26 @@
       for={@name_changeset}
       method="post"
     >
-      <.input type="text" field={f[:name]} label="Name" width="w-1/2" mt?={false} />
+      <.input type="text" field={f[:name]} label="Nome" width="w-1/2" mt?={false} />
 
       <.button type="submit">
-        Change name
+        Alterar nome
       </.button>
     </.form>
   </.tile>
 
   <.tile :if={Plausible.Users.type(@current_user) == :sso}>
     <:title>
-      <a id="view-name">Your name</a>
+      <a id="view-name">Seu nome</a>
     </:title>
     <.form :let={f} for={@name_changeset}>
-      <.input type="text" field={f[:name]} disabled={true} label="Name" width="w-1/2" mt?={false} />
+      <.input type="text" field={f[:name]} disabled={true} label="Nome" width="w-1/2" mt?={false} />
     </.form>
   </.tile>
 
   <.tile docs="dashboard-appearance">
     <:title>
-      <a id="update-theme">Appearance</a>
+      <a id="update-theme">Aparência</a>
     </:title>
     <.form
       :let={f}
@@ -40,13 +40,13 @@
         type="select"
         field={f[:theme]}
         options={Plausible.Themes.options()}
-        label="Theme"
+        label="Tema"
         width="w-1/2"
         mt?={false}
       />
 
       <.button type="submit">
-        Change theme
+        Alterar tema
       </.button>
     </.form>
   </.tile>

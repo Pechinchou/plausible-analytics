@@ -152,7 +152,7 @@ defmodule PlausibleWeb.Live.Sites do
                 id="add-site-dropdown-menuitem-1"
                 href={Routes.site_path(@socket, :new, %{flow: PlausibleWeb.Flows.provisioning()})}
               >
-                <Heroicons.plus class={PrimaDropdown.dropdown_item_icon_class()} /> Add website
+                <Heroicons.plus class={PrimaDropdown.dropdown_item_icon_class()} /> Adicionar site
               </PrimaDropdown.dropdown_item>
               <PrimaDropdown.dropdown_item
                 id="add-site-dropdown-menuitem-2"
@@ -169,7 +169,7 @@ defmodule PlausibleWeb.Live.Sites do
             href={"/sites/new?flow=#{PlausibleWeb.Flows.provisioning()}"}
             mt?={false}
           >
-            <Heroicons.plus class="size-4" /> Add website
+            <Heroicons.plus class="size-4" /> Adicionar site
           </.button_link>
         </div>
       </div>
@@ -202,7 +202,7 @@ defmodule PlausibleWeb.Live.Sites do
             theme="primary"
             mt?={false}
           >
-            <Heroicons.plus class="size-4" /> Add website
+            <Heroicons.plus class="size-4" /> Adicionar site
           </.button_link>
           <.button_link
             :if={not Teams.setup?(@current_team) and @has_sites? and length(@teams) == 1}
@@ -688,7 +688,7 @@ defmodule PlausibleWeb.Live.Sites do
               {large_number_format(@sparkline.visitors)}
             </p>
             <p class="text-gray-600 dark:text-gray-400">
-              visitor<span :if={@sparkline.visitors != 1}>s</span> in last 24h
+              visitante<span :if={@sparkline.visitors != 1}>s</span> nas últimas 24h
             </p>
           </div>
 
@@ -748,10 +748,10 @@ defmodule PlausibleWeb.Live.Sites do
   end
 
   @sort_options [
-    {"Most visitors", Index.UserPreference.default()},
-    {"Fewest visitors", Index.UserPreference.new(%{sort_by: :traffic, sort_direction: :asc})},
-    {"Name A-Z", Index.UserPreference.new(%{sort_by: :alnum, sort_direction: :asc})},
-    {"Name Z-A", Index.UserPreference.new(%{sort_by: :alnum, sort_direction: :desc})}
+    {"Mais visitantes", Index.UserPreference.default()},
+    {"Menos visitantes", Index.UserPreference.new(%{sort_by: :traffic, sort_direction: :asc})},
+    {"Nome A-Z", Index.UserPreference.new(%{sort_by: :alnum, sort_direction: :asc})},
+    {"Nome Z-A", Index.UserPreference.new(%{sort_by: :alnum, sort_direction: :desc})}
   ]
 
   def sort_dropdown(assigns) do

@@ -68,10 +68,10 @@ export default function TopStats({
           </div>
         )}
 
-        {stat.name === 'Current visitors' && (
+        {stat.name === 'Visitantes ativos' && (
           <p className="font-normal text-xs">
-            Last updated{' '}
-            <SecondsSinceLastLoad lastLoadTimestamp={lastLoadTimestamp} />s ago
+            Atualizado há{' '}
+            <SecondsSinceLastLoad lastLoadTimestamp={lastLoadTimestamp} />s
           </p>
         )}
 
@@ -178,7 +178,7 @@ export default function TopStats({
               <p
                 className="font-semibold text-[1.2rem] text-gray-900 dark:text-gray-100"
                 id={
-                  stat.name === 'Current visitors'
+                  stat.name === 'Visitantes ativos'
                     ? 'current_visitors'
                     : stat.metric
                 }
@@ -229,7 +229,7 @@ export default function TopStats({
       ? {
           metric: 'visitors',
           value: currentVisitors,
-          name: 'Current visitors',
+          name: 'Visitantes ativos',
           graphable: false
         }
       : null

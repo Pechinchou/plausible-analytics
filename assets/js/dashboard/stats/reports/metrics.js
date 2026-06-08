@@ -74,7 +74,7 @@ export const createVisitors = (props) => {
   } else {
     renderLabel = (dashboardState) => {
       const defaultLabel = props.defaultLabel || 'Visitors'
-      const realtimeLabel = props.realtimeLabel || 'Current visitors'
+      const realtimeLabel = props.realtimeLabel || 'Visitantes ativos'
       const goalFilterLabel = props.goalFilterLabel || 'Conversions'
 
       if (dashboardState && hasConversionGoalFilter(dashboardState)) {

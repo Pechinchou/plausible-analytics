@@ -78,7 +78,7 @@
                   </:button>
                   <:menu class="max-w-xs">
                     <.dropdown_item>
-                      <div class="text-xs text-gray-500 dark:text-gray-400">Signed in as</div>
+                      <div class="text-xs text-gray-500 dark:text-gray-400">Conectado como</div>
                       <p class="truncate font-medium text-gray-900 dark:text-gray-100" role="none">
                         {@conn.assigns[:current_user].email}
                       </p>
@@ -91,13 +91,13 @@
                     />
                     <.dropdown_divider />
                     <.dropdown_item href={Routes.settings_path(@conn, :index)}>
-                      Account settings
+                      Configurações da conta
                     </.dropdown_item>
 
                     <div :if={@my_team && @my_team.id == @current_team.id}>
                       <.dropdown_item class="flex" href={Routes.team_setup_path(@conn, :setup)}>
                         <span data-test="create-a-team-cta" class="flex-1">
-                          Create a team
+                          Criar uma equipe
                         </span>
                       </.dropdown_item>
                       <.dropdown_divider />
@@ -109,7 +109,7 @@
                         href={Routes.settings_path(@conn, :team_general)}
                       >
                         <span class="flex-1">
-                          Team settings
+                          Configurações da equipe
                         </span>
                       </.dropdown_item>
                       <.dropdown_divider />
@@ -119,7 +119,7 @@
                       new_tab
                       href="https://plausible.io/docs"
                     >
-                      Help center
+                      Central de ajuda
                     </.dropdown_item>
                     <.dropdown_item
                       :if={ee?()}
@@ -127,7 +127,7 @@
                       new_tab
                       href="https://plausible.io/contact"
                     >
-                      Contact support
+                      Contatar suporte
                     </.dropdown_item>
                     <.dropdown_item
                       :if={ee?()}
@@ -135,7 +135,7 @@
                       new_tab
                       href={feedback_link(@conn.assigns[:current_user])}
                     >
-                      Feature requests
+                      Sugestões de funcionalidades
                     </.dropdown_item>
                     <.dropdown_item
                       :if={ce?()}
@@ -143,9 +143,9 @@
                       new_tab
                       href="https://github.com/plausible/analytics"
                     >
-                      Github repo
+                      Repositório GitHub
                     </.dropdown_item>
-                    <.dropdown_item href="/logout">Log out</.dropdown_item>
+                    <.dropdown_item href="/logout">Sair</.dropdown_item>
                   </:menu>
                 </.dropdown>
               </li>

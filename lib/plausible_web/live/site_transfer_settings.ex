@@ -155,7 +155,7 @@ defmodule PlausibleWeb.Live.SiteTransferSettings do
                   value={:my_team}
                   checked={f[:destination].value == :my_team}
                   disabled={not @show_my_team?}
-                  label="My personal sites"
+                  label="Meus sites pessoais"
                 />
                 <div class="ml-7">
                   <.input
@@ -313,6 +313,6 @@ defmodule PlausibleWeb.Live.SiteTransferSettings do
   end
 
   defp change_team_error_message(_, true = _my_team?) do
-    "Sorry, My personal sites cannot be used."
+    "Desculpe, Meus sites pessoais não pode ser usado."
   end
 end
