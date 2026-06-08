@@ -620,7 +620,7 @@ defmodule PlausibleWeb.Live.Sites do
             as={&link/1}
             href={Routes.site_path(PlausibleWeb.Endpoint, :settings_general, @site.domain)}
           >
-            <Heroicons.cog_6_tooth class={PrimaDropdown.dropdown_item_icon_class()} /> Settings
+            <Heroicons.cog_6_tooth class={PrimaDropdown.dropdown_item_icon_class()} /> Configurações
           </PrimaDropdown.dropdown_item>
 
           <PrimaDropdown.dropdown_item
@@ -646,7 +646,7 @@ defmodule PlausibleWeb.Live.Sites do
               :if={!@site.pinned_at}
               class={PrimaDropdown.dropdown_item_icon_class()}
             />
-            {if @site.pinned_at, do: "Unpin site", else: "Pin site"}
+            {if @site.pinned_at, do: "Desafixar site", else: "Fixar site"}
           </PrimaDropdown.dropdown_item>
 
           <PrimaDropdown.dropdown_item

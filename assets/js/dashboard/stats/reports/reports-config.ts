@@ -165,41 +165,41 @@ export const BREAKDOWN_REPORTS: Record<
   [BreakdownReportKey.utmMediums]: {
     dimensions: ['visit:utm_medium'],
     metricsByContext: COMMON_METRICS_BY_CONTEXT,
-    detailsTitle: 'UTM mediums',
+    detailsTitle: 'UTM mídias',
     detailsPath: 'utm_mediums',
-    dimensionLabel: 'UTM medium',
+    dimensionLabel: 'UTM mídia',
     alwaysOnFilters: [['is_not', 'visit:utm_medium', ['']]]
   },
   [BreakdownReportKey.utmSources]: {
     dimensions: ['visit:utm_source'],
     metricsByContext: COMMON_METRICS_BY_CONTEXT,
-    detailsTitle: 'UTM sources',
+    detailsTitle: 'UTM fontes',
     detailsPath: 'utm_sources',
-    dimensionLabel: 'UTM source',
+    dimensionLabel: 'UTM fonte',
     alwaysOnFilters: [['is_not', 'visit:utm_source', ['']]]
   },
   [BreakdownReportKey.utmCampaigns]: {
     dimensions: ['visit:utm_campaign'],
     metricsByContext: COMMON_METRICS_BY_CONTEXT,
-    detailsTitle: 'UTM campaigns',
+    detailsTitle: 'UTM campanhas',
     detailsPath: 'utm_campaigns',
-    dimensionLabel: 'UTM campaign',
+    dimensionLabel: 'UTM campanha',
     alwaysOnFilters: [['is_not', 'visit:utm_campaign', ['']]]
   },
   [BreakdownReportKey.utmContents]: {
     dimensions: ['visit:utm_content'],
     metricsByContext: COMMON_METRICS_BY_CONTEXT,
-    detailsTitle: 'UTM contents',
+    detailsTitle: 'UTM conteúdos',
     detailsPath: 'utm_contents',
-    dimensionLabel: 'UTM content',
+    dimensionLabel: 'UTM conteúdo',
     alwaysOnFilters: [['is_not', 'visit:utm_content', ['']]]
   },
   [BreakdownReportKey.utmTerms]: {
     dimensions: ['visit:utm_term'],
     metricsByContext: COMMON_METRICS_BY_CONTEXT,
-    detailsTitle: 'UTM terms',
+    detailsTitle: 'UTM termos',
     detailsPath: 'utm_terms',
-    dimensionLabel: 'UTM term',
+    dimensionLabel: 'UTM termo',
     alwaysOnFilters: [['is_not', 'visit:utm_term', ['']]]
   },
   [BreakdownReportKey.countries]: {
