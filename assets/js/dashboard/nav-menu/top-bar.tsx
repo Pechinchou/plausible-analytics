@@ -31,7 +31,7 @@ function TopBarStickyWrapper({ children }: { children: ReactNode }) {
       <div id="stats-container-top" className="col-span-full" ref={ref} />
       <div
         className={classNames(
-          'col-span-full relative top-0 py-2 -my-3 sm:-my-4 z-10',
+          'col-span-full relative top-0 py-2 -my-3 sm:-my-4 z-10 max-xs:hidden',
           !site.embedded &&
             !inView &&
             'sticky bg-gray-50 dark:bg-gray-950 before:absolute before:top-0 before:w-screen before:h-full before:bg-inherit before:shadow-[0_4px_2px_-2px_rgb(0_0_0/6%)] before:z-[-1] before:left-[calc(50%-50vw)]'

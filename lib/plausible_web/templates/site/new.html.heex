@@ -2,7 +2,7 @@
 
 <.focus_box>
   <:title>
-    Add website info
+    Adicionar informações do site
   </:title>
 
   <.form :let={f} for={@changeset} action={@form_submit_url}>
@@ -16,23 +16,23 @@
 
     <div class="my-6">
       <.input
-        help_text="Just the naked domain or subdomain without 'www', 'https' etc."
+        help_text="Apenas o domínio ou subdomínio sem 'www', 'https' etc."
         type="text"
         placeholder="example.com"
         field={f[:domain]}
-        label="Domain"
+        label="Domínio"
         disabled={@site_limit_exceeded?}
       />
     </div>
     <div class="my-6">
       <.input
         type="select"
-        help_text="To make sure we agree on what 'today' means"
+        help_text="Para garantir que concordamos sobre o que 'hoje' significa"
         field={f[:timezone]}
         id="tz-select"
         value="Etc/Greenwich"
         disabled={@site_limit_exceeded?}
-        label="Reporting timezone"
+        label="Fuso horário"
         options={Plausible.Timezones.options()}
       />
     </div>
@@ -57,7 +57,7 @@
       type="submit"
       class="w-full disabled:cursor-not-allowed"
     >
-      Install Plausible
+      Instalar Plausible
     </.button>
   </.form>
 </.focus_box>

@@ -7,6 +7,9 @@
 
 @plugin "@tailwindcss/forms";
 
+/* Breakpoint para smart TV / telas pequenas (≤600px) */
+@custom-variant max-xs (@media (max-width: 37.5rem));
+
 @source "../css";
 @source "../js";
 @source "../../lib/plausible_web";

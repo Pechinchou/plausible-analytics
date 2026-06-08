@@ -111,7 +111,7 @@ export default function VisitorGraph({
     !showFullLoader
 
   return (
-    <div className="col-span-full relative w-full bg-white rounded-md shadow-sm dark:bg-gray-900">
+    <div className="col-span-full relative w-full bg-white rounded-md shadow-sm dark:bg-gray-900 max-xs:hidden">
       <>
         <div
           id="top-stats-container"

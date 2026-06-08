@@ -46,7 +46,7 @@ function Dashboard() {
     <CurrentVisitorsProvider>
       <GraphIntervalProvider>
         <ImportsIncludedProvider>
-          <div className="mb-16 grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div className="mb-16 grid grid-cols-1 md:grid-cols-2 gap-5 max-xs:gap-3">
             <TopBar showCurrentVisitors={!isRealTimeDashboard} />
             <DashboardStats
               importedDataInView={
