@@ -18,10 +18,10 @@ import { getSelectedSuggestion } from './journey'
 // Column header label based on index and direction.
 function columnHeader(index: number, direction: ExplorationDirection): string {
   if (index === 0) {
-    return direction === DIRECTION.BACKWARD ? 'End point' : 'Starting point'
+    return direction === DIRECTION.BACKWARD ? 'Ponto final' : 'Ponto inicial'
   }
-  const word = direction === DIRECTION.BACKWARD ? 'before' : 'after'
-  return `${index} step${index === 1 ? '' : 's'} ${word}`
+  const word = direction === DIRECTION.BACKWARD ? 'antes' : 'depois'
+  return `${index} etapa${index === 1 ? '' : 's'} ${word}`
 }
 
 // Scrolls the active column into view whenever the journey length changes.
@@ -119,8 +119,8 @@ export function FunnelExploration() {
             className="flex-1 text-base font-semibold dark:text-gray-100"
           >
             {funnel.length >= 2
-              ? `${funnel.length}-step user journey`
-              : 'Explore user journeys'}
+              ? `Jornada de ${funnel.length} etapas`
+              : 'Explorar jornadas de usuários'}
           </h4>
 
           {overallConversionRate != null && (
@@ -140,7 +140,7 @@ export function FunnelExploration() {
           )}
 
           <Tooltip
-            info={<span className="whitespace-nowrap">Deselect all</span>}
+            info={<span className="whitespace-nowrap">Desmarcar todos</span>}
             className={
               steps.length === 0 ? 'invisible pointer-events-none' : ''
             }
@@ -157,7 +157,7 @@ export function FunnelExploration() {
 
         {noData ? (
           <div className="flex-1 flex items-center justify-center font-medium text-gray-500 dark:text-gray-400">
-            No data yet
+            Sem dados ainda
           </div>
         ) : (
           <div

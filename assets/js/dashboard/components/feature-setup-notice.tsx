@@ -39,7 +39,7 @@ export function FeatureSetupNotice({
   const requestHideSection = () => {
     if (
       window.confirm(
-        `Are you sure you want to hide ${sectionTitle}? You can make it visible again in your site settings later.`
+        `Tem certeza que deseja ocultar ${sectionTitle}? Você pode torná-lo visível novamente nas configurações do site.`
       )
     ) {
       api
@@ -76,7 +76,7 @@ export function FeatureSetupNotice({
         onClick={requestHideSection}
         className={buttonClassName({ theme: 'secondary' })}
       >
-        Hide this report
+        Ocultar este relatório
       </button>
     )
   }

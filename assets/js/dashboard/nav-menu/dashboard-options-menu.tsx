@@ -55,7 +55,7 @@ function ExportItem({ selectedInterval }: { selectedInterval: string }) {
         popover.items.classNames.hoverLink
       )}
     >
-      <span className="text-sm">Export stats</span>
+      <span className="text-sm">Exportar estatísticas</span>
       {exporting ? (
         <Spinner className="animate-spin size-4 text-indigo-500" />
       ) : (
@@ -84,7 +84,7 @@ function ImportedSwitchItem({ disabled }: { disabled: boolean }) {
           : popover.items.classNames.hoverLink
       )}
     >
-      Include imported data
+      Incluir dados importados
       <Toggle on={importsSwitchedOn} disabled={disabled} />
     </AppNavigationLink>
   )
@@ -153,7 +153,7 @@ function DashboardOptionsMenuItems() {
               {imports.disabled ? (
                 <Notice
                   className="m-1"
-                  title="Imported data unavailable with current filters."
+                  title="Dados importados indisponíveis com os filtros atuais."
                 />
               ) : (
                 imports.intervalUnsupportedNotice && (

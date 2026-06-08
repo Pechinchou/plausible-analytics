@@ -19,32 +19,30 @@ import { ColumnConfiguration, MetricValueWrapper } from '../breakdowns'
 
 function ErrorMessage({ code }: { code: SearchTermsErrorCode }): JSX.Element {
   if (code === 'not_configured') {
-    return <div>The site is not connected to Google Search Keywords</div>
+    return <div>O site não está conectado ao Google Search Keywords</div>
   } else if (code === 'unsupported_filters') {
     return (
       <div>
-        Unable to fetch keyword data from Search Console because it does not
-        support the current set of filters
+        Não foi possível buscar dados de palavras-chave do Search Console porque ele não suporta os filtros atuais
       </div>
     )
   } else if (code === 'period_too_recent') {
     return (
       <div>
-        No search terms were found for this period. Please adjust or extend your
-        time range. Check{' '}
+        Nenhum termo de busca foi encontrado para este período. Ajuste ou amplie seu intervalo de tempo. Consulte{' '}
         <a
           href="https://plausible.io/docs/google-search-console-integration#i-dont-see-google-search-query-data-in-my-dashboard"
           target="_blank"
           rel="noreferrer"
           className="hover:underline text-indigo-700 dark:text-indigo-500"
         >
-          our documentation
+          nossa documentação
         </a>{' '}
         for more details.
       </div>
     )
   } else {
-    return <div>Unable to fetch keyword data from Search Console</div>
+    return <div>Não foi possível buscar dados de palavras-chave do Search Console</div>
   }
 }
 
@@ -55,12 +53,12 @@ function ConfigureSearchTermsCTA({
 }): JSX.Element {
   return (
     <>
-      <div>Configure the integration to view search terms</div>
+      <div>Configure a integração para ver os termos de busca</div>
       <a
         href={`/${encodeURIComponent(site.domain)}/settings/integrations`}
         className="button mt-4"
       >
-        Connect with Google
+        Conectar com o Google
       </a>
     </>
   )
@@ -98,7 +96,7 @@ export function SearchTerms({
     return [
       {
         key: 'dimension',
-        renderLabel: () => 'Search term',
+        renderLabel: () => 'Termo de busca',
         renderCell: (item, _isActive) => (
           <Bar
             barWidthPercent={(item.visitors / barMaxValue) * 100}
@@ -111,7 +109,7 @@ export function SearchTerms({
       },
       {
         key: 'visitors',
-        renderLabel: () => 'Visitors',
+        renderLabel: () => 'Visitantes',
         renderCell: (item, _isActive) => (
           <MetricValueWrapper>
             {numberShortFormatter(item.visitors)}

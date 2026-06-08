@@ -41,13 +41,13 @@ export const FILTER_OPERATIONS = {
 }
 
 export const FILTER_OPERATIONS_DISPLAY_NAMES = {
-  [FILTER_OPERATIONS.is]: 'is',
-  [FILTER_OPERATIONS.isNot]: 'is not',
-  [FILTER_OPERATIONS.contains]: 'contains',
-  [FILTER_OPERATIONS.contains_not]: 'does not contain',
+  [FILTER_OPERATIONS.is]: 'é',
+  [FILTER_OPERATIONS.isNot]: 'não é',
+  [FILTER_OPERATIONS.contains]: 'contém',
+  [FILTER_OPERATIONS.contains_not]: 'não contém',
   // :NOTE: Goal filters are displayed as "is not" in the UI, but in the backend they are wrapped with has_not_done.
   // It is currently unclear if we'll do the same for other event filters in the future.
-  [FILTER_OPERATIONS.has_not_done]: 'is not'
+  [FILTER_OPERATIONS.has_not_done]: 'não é'
 }
 
 export function supportsIsNot(filterName) {
@@ -313,29 +313,29 @@ export function getFilterGroup([_operation, filterKey, _clauses]) {
 }
 
 export const formattedFilters = {
-  goal: 'Goal',
-  props: 'Property',
-  prop_key: 'Property',
-  prop_value: 'Value',
-  source: 'Source',
-  channel: 'Channel',
+  goal: 'Meta',
+  props: 'Propriedade',
+  prop_key: 'Propriedade',
+  prop_value: 'Valor',
+  source: 'Fonte',
+  channel: 'Canal',
   utm_medium: 'UTM medium',
   utm_source: 'UTM source',
   utm_campaign: 'UTM campaign',
   utm_content: 'UTM content',
   utm_term: 'UTM term',
-  referrer: 'Referrer URL',
-  screen: 'Screen size',
-  browser: 'Browser',
-  browser_version: 'Browser version',
-  os: 'Operating system',
-  os_version: 'Operating system version',
-  country: 'Country',
-  region: 'Region',
-  city: 'City',
-  page: 'Page',
+  referrer: 'URL de referência',
+  screen: 'Tamanho de tela',
+  browser: 'Navegador',
+  browser_version: 'Versão do navegador',
+  os: 'Sistema operacional',
+  os_version: 'Versão do sistema operacional',
+  country: 'País',
+  region: 'Região',
+  city: 'Cidade',
+  page: 'Página',
   hostname: 'Hostname',
-  entry_page: 'Entry page',
-  exit_page: 'Exit page',
-  segment: 'Segment'
+  entry_page: 'Página de entrada',
+  exit_page: 'Página de saída',
+  segment: 'Segmento'
 }

@@ -69,7 +69,7 @@ export function BreakdownTable<T>({
         <button
           type="button"
           onClick={handleClose}
-          aria-label="Close modal"
+          aria-label="Fechar modal"
           className="text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300"
         >
           <XMarkIcon className="size-5" />
@@ -115,7 +115,7 @@ const ErrorMessage = ({ error }: { error?: unknown }) => (
     <div className="text-lg text-center">
       {error
         ? (error as { message: string }).message
-        : 'Error loading data. Refresh the page to try again'}
+        : 'Erro ao carregar dados. Atualize a página para tentar novamente'}
     </div>
   </div>
 )
@@ -132,7 +132,7 @@ const LoadMore = ({
       <SmallLoadingSpinner />
     ) : (
       <button onClick={onClick} type="button" className="button">
-        Load more
+        Carregar mais
       </button>
     )}
   </div>

@@ -186,7 +186,7 @@ export const SiteSwitcher = () => {
               }
             >
               {currentSite.isConsolidatedView
-                ? 'All sites'
+                ? 'Todos os sites'
                 : currentSite.domain}
             </span>
             <ChevronDownIcon className="hidden lg:block size-4" />
@@ -207,7 +207,7 @@ export const SiteSwitcher = () => {
                 {canSeeViewAllSites && (
                   <a className={buttonLinkClassName} href={`/sites`}>
                     <ArrowLeftIcon className="size-4 mr-1.5" />
-                    Back to sites
+                    Voltar para sites
                   </a>
                 )}
                 {canSeeSiteSettings && (
@@ -216,7 +216,7 @@ export const SiteSwitcher = () => {
                     href={`/${encodeURIComponent(currentSite.domain)}/settings/general`}
                   >
                     <Cog8ToothIcon className="size-4 mr-1.5" />
-                    Site settings
+                    Configurações do site
                   </a>
                 )}
               </div>
@@ -231,7 +231,7 @@ export const SiteSwitcher = () => {
               {sitesQuery.isError && (
                 <div className="px-3 py-2">
                   <ErrorPanel
-                    errorMessage={'Error loading sites'}
+                    errorMessage={'Erro ao carregar sites'}
                     onClose={sitesQuery.refetch}
                   />
                 </div>
@@ -248,7 +248,7 @@ export const SiteSwitcher = () => {
                   onClick={() => closePopover()}
                 >
                   <GlobeIcon className="size-4 block mr-2 text-indigo-600 dark:text-white" />
-                  <span className="truncate mr-auto">All sites</span>
+                  <span className="truncate mr-auto">Todos os sites</span>
                   <KeybindHint>0</KeybindHint>
                 </a>
               )}

@@ -81,12 +81,12 @@ export function Devices() {
           <TabWrapper>
             {(
               [
-                { label: 'Browsers', value: BreakdownReportKey.browsers },
+                { label: 'Navegadores', value: BreakdownReportKey.browsers },
                 {
-                  label: 'Operating systems',
+                  label: 'Sistemas operacionais',
                   value: BreakdownReportKey.operatingSystems
                 },
-                { label: 'Devices', value: BreakdownReportKey.screenSizes }
+                { label: 'Dispositivos', value: BreakdownReportKey.screenSizes }
               ] as const
             ).map(({ label, value }) => (
               <TabButton

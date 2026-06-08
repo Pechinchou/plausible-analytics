@@ -289,12 +289,12 @@ function Behaviours({ importedDataInView, setMode, mode }) {
       return (
         <FeatureSetupNotice
           feature={Mode.CONVERSIONS}
-          title={'Measure how often visitors complete specific actions'}
+          title={'Meça com que frequência visitantes completam ações específicas'}
           info={
-            'Goals allow you to track registrations, button clicks, form completions, external link clicks, file downloads, 404 error pages and more.'
+            'Metas permitem rastrear cadastros, cliques em botões, preenchimentos de formulários, cliques em links externos, downloads de arquivos, páginas 404 e muito mais.'
           }
           callToAction={{
-            action: 'Set up goals',
+            action: 'Configurar metas',
             link: `/${encodeURIComponent(site.domain)}/settings/goals`
           }}
           onHideAction={() => disableMode(Mode.CONVERSIONS)}
@@ -314,18 +314,18 @@ function Behaviours({ importedDataInView, setMode, mode }) {
       return <FunnelExploration />
     }
 
-    const callToAction = { action: 'Upgrade', link: '/billing/choose-plan' }
+    const callToAction = { action: 'Fazer upgrade', link: '/billing/choose-plan' }
 
     return (
       <FeatureSetupNotice
         feature={Mode.EXPLORATION}
-        title={'Explore user journeys'}
+        title={'Explore jornadas de usuários'}
         info={
-          'See how visitors move between pages and events to understand browsing behavior.'
+          'Veja como visitantes se movem entre páginas e eventos para entender o comportamento de navegação.'
         }
         callToAction={callToAction}
         secondaryCallToAction={{
-          action: 'Learn more',
+          action: 'Saiba mais',
           link: 'https://plausible.io/docs/user-journeys'
         }}
         onHideAction={null}
@@ -344,19 +344,19 @@ function Behaviours({ importedDataInView, setMode, mode }) {
 
       if (site.funnelsAvailable) {
         callToAction = {
-          action: 'Set up funnels',
+          action: 'Configurar funis',
           link: `/${encodeURIComponent(site.domain)}/settings/funnels`
         }
       } else {
-        callToAction = { action: 'Upgrade', link: '/billing/choose-plan' }
+        callToAction = { action: 'Fazer upgrade', link: '/billing/choose-plan' }
       }
 
       return (
         <FeatureSetupNotice
           feature={Mode.FUNNELS}
-          title={'Analyze conversion funnels'}
+          title={'Analise funis de conversão'}
           info={
-            'Measure conversion rates between each step and identify where visitors drop off.'
+            'Meça taxas de conversão entre cada etapa e identifique onde os visitantes abandonam.'
           }
           callToAction={callToAction}
           onHideAction={() => disableMode(Mode.FUNNELS)}
@@ -380,19 +380,19 @@ function Behaviours({ importedDataInView, setMode, mode }) {
 
       if (site.propsAvailable) {
         callToAction = {
-          action: 'Set up props',
+          action: 'Configurar propriedades',
           link: `/${encodeURIComponent(site.domain)}/settings/properties`
         }
       } else {
-        callToAction = { action: 'Upgrade', link: '/billing/choose-plan' }
+        callToAction = { action: 'Fazer upgrade', link: '/billing/choose-plan' }
       }
 
       return (
         <FeatureSetupNotice
           feature={Mode.PROPS}
-          title={'Attach your own data to the stats'}
+          title={'Adicione seus próprios dados às estatísticas'}
           info={
-            'Create custom metrics and analyze data specific to your business.'
+            'Crie métricas personalizadas e analise dados específicos do seu negócio.'
           }
           callToAction={callToAction}
           onHideAction={() => disableMode(Mode.PROPS)}
@@ -489,14 +489,14 @@ function Behaviours({ importedDataInView, setMode, mode }) {
         <ImportedQueryUnsupportedWarning
           loading={loading}
           skipImportedReason={skipImportedReason}
-          message="Imported data is unavailable in this view"
+          message="Dados importados indisponíveis nesta visualização"
         />
       )
     } else {
       return (
         <ImportedQueryUnsupportedWarning
           altCondition={importedDataInView}
-          message="Imported data is unavailable in this view"
+          message="Dados importados indisponíveis nesta visualização"
         />
       )
     }
@@ -524,7 +524,7 @@ function Behaviours({ importedDataInView, setMode, mode }) {
                   active={mode === Mode.CONVERSIONS}
                   onClick={setTabFactory(Mode.CONVERSIONS)}
                 >
-                  Goals
+                  Metas
                 </TabButton>
               ))}
             {isEnabled(Mode.PROPS) &&
@@ -541,14 +541,14 @@ function Behaviours({ importedDataInView, setMode, mode }) {
                 }))}
                 searchable={true}
               >
-                Properties
+                Propriedades
               </DropdownTabButton>
             ) : (
               <TabButton
                 active={mode === Mode.PROPS}
                 onClick={setTabFactory(Mode.PROPS)}
               >
-                Properties
+                Propriedades
               </TabButton>
             )}
             {!site.isConsolidatedView &&
@@ -566,14 +566,14 @@ function Behaviours({ importedDataInView, setMode, mode }) {
                   }))}
                   searchable={true}
                 >
-                  Funnels
+                  Funis
                 </DropdownTabButton>
               ) : (
                 <TabButton
                   active={mode === Mode.FUNNELS}
                   onClick={setTabFactory(Mode.FUNNELS)}
                 >
-                  Funnels
+                  Funis
                 </TabButton>
               ))}
             {!site.isConsolidatedView && isEnabled(Mode.EXPLORATION) && (
@@ -581,7 +581,7 @@ function Behaviours({ importedDataInView, setMode, mode }) {
                 active={mode === Mode.EXPLORATION}
                 onClick={setTabFactory(Mode.EXPLORATION)}
               >
-                Explore
+                Explorar
               </TabButton>
             )}
           </TabWrapper>

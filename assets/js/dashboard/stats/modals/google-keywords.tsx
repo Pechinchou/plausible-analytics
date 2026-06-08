@@ -15,20 +15,20 @@ import {
 const metricColumns = [
   {
     key: 'visitors',
-    label: 'Visitors',
+    label: 'Visitantes',
     formatter: numberShortFormatter,
     width: 'w-28'
   },
   {
     key: 'impressions',
-    label: 'Impressions',
+    label: 'Impressões',
     formatter: numberShortFormatter,
     width: 'w-28'
   },
   { key: 'ctr', label: 'CTR', formatter: percentageFormatter, width: 'w-24' },
   {
     key: 'position',
-    label: 'Position',
+    label: 'Posição',
     formatter: numberShortFormatter,
     width: 'w-24'
   }
@@ -43,7 +43,7 @@ function GoogleKeywordsModal() {
     () => [
       {
         key: 'name',
-        renderLabel: () => 'Search term',
+        renderLabel: () => 'Termo de busca',
         renderCell: (item) => item.name,
         width: 'w-48 max-w-48 md:w-56 md:max-w-56',
         align: 'left'
@@ -71,7 +71,7 @@ function GoogleKeywordsModal() {
   return (
     <Modal>
       <BreakdownTable<SearchTermsResultItem>
-        title="Google search terms"
+        title="Termos de pesquisa do Google"
         onSearch={setSearch}
         {...apiState}
         error={apiState.error}

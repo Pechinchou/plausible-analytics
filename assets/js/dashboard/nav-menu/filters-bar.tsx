@@ -235,10 +235,10 @@ const SeeMoreMenu = ({
 
   const title =
     filtersInMenuCount === 1
-      ? 'See 1 more filter and actions'
+      ? 'Ver 1 filtro adicional e ações'
       : filtersInMenuCount > 1
-        ? `See ${filtersInMenuCount} more filters and actions`
-        : 'See actions'
+        ? `Ver ${filtersInMenuCount} filtros adicionais e ações`
+        : 'Ver ações'
 
   const showMoreFilters = filtersCount !== visibleFiltersCount
   const showSomeActions = actions.some((a) => a)
@@ -348,7 +348,7 @@ const ClearAction = ({ className }: { className?: string }) => (
       labels: null
     })}
   >
-    Clear all filters
+    Limpar todos os filtros
   </AppNavigationLink>
 )
 
@@ -362,7 +362,7 @@ const SaveAsSegmentAction = ({ className }: { className?: string }) => {
       onClick={() => setModal('create')}
       state={{ expandedSegment: null }}
     >
-      Save as segment
+      Salvar como segmento
     </AppNavigationLink>
   )
 }

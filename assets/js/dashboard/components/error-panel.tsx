@@ -31,7 +31,7 @@ export const ErrorPanel = ({
       <button
         className="flex ml-auto w-5 h-5 items-center justify-center hover:text-red-700 dark:hover:text-red-900"
         onClick={onClose}
-        title="Close notice"
+        title="Fechar aviso"
       >
         <XMarkIcon className="block w-4 h-4 shrink-0" />
       </button>
@@ -40,7 +40,7 @@ export const ErrorPanel = ({
       <button
         className="flex ml-auto w-5 h-5 items-center justify-center hover:text-red-700 dark:hover:text-red-900"
         onClick={onRetry}
-        title="Retry"
+        title="Tentar novamente"
       >
         <ArrowPathIcon className="block w-4 h-4 shrink-0" />
       </button>

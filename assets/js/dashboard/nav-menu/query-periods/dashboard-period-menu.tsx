@@ -154,7 +154,7 @@ const DashboardPeriodMenuInner = ({
       onEvent: closeDropdown,
       extraItemsInLastGroup: [
         [
-          ['Custom Range', 'C'],
+          ['Intervalo personalizado', 'C'],
           {
             search: (s) => s,
             isActive: ({ dashboardState }) =>

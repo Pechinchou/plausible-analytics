@@ -4,15 +4,15 @@ import { CustomLocale } from 'flatpickr/dist/types/locale'
 
 const calendarLocale: Partial<CustomLocale> = {
   weekdays: {
-    shorthand: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+    shorthand: ['Do', 'Se', 'Te', 'Qu', 'Qi', 'Se', 'Sá'],
     longhand: [
-      'Sunday',
-      'Monday',
-      'Tuesday',
-      'Wednesday',
-      'Thursday',
-      'Friday',
-      'Saturday'
+      'Domingo',
+      'Segunda-feira',
+      'Terça-feira',
+      'Quarta-feira',
+      'Quinta-feira',
+      'Sexta-feira',
+      'Sábado'
     ]
   }
 }

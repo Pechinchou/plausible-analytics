@@ -71,7 +71,7 @@ export const SegmentMenu = () => {
           setModal('update')
         }}
       >
-        <span className="px-2 whitespace-nowrap">Update segment</span>
+        <span className="px-2 whitespace-nowrap">Atualizar segmento</span>
       </AppNavigationLink>
       <Popover className="md:relative">
         {({ close: closeDropdown }) => (
@@ -112,7 +112,7 @@ export const SegmentMenu = () => {
                   <div className="flex items-center gap-x-2">
                     <Square2StackIcon className="w-4 h-4 block" />
                     <span className="whitespace-nowrap">
-                      Save as a new segment
+                      Salvar como novo segmento
                     </span>
                   </div>
                 </AppNavigationLink>
@@ -127,7 +127,7 @@ export const SegmentMenu = () => {
                 >
                   <div className="flex items-center gap-x-2">
                     <TrashIcon className="w-4 h-4 block" />
-                    <span className="whitespace-nowrap">Delete segment</span>
+                    <span className="whitespace-nowrap">Excluir segmento</span>
                   </div>
                 </AppNavigationLink>
                 <AppNavigationLink
@@ -143,7 +143,7 @@ export const SegmentMenu = () => {
                   <div className="flex items-center gap-x-2">
                     <XMarkIcon className="w-4 h-4 block" />
                     <span className="whitespace-nowrap">
-                      Close without saving
+                      Fechar sem salvar
                     </span>
                   </div>
                 </AppNavigationLink>

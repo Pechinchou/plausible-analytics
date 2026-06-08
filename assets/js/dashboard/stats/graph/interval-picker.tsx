@@ -12,10 +12,10 @@ import { DashboardPeriod } from '../../dashboard-time-periods'
 
 const INTERVAL_LABELS: Record<Interval, string> = {
   [Interval.minute]: 'Min',
-  [Interval.hour]: 'Hours',
-  [Interval.day]: 'Days',
-  [Interval.week]: 'Weeks',
-  [Interval.month]: 'Months'
+  [Interval.hour]: 'Horas',
+  [Interval.day]: 'Dias',
+  [Interval.week]: 'Semanas',
+  [Interval.month]: 'Meses'
 }
 
 function getIntervalStorageKey(
@@ -141,10 +141,10 @@ export function IntervalPicker({
   return (
     <div className="flex justify-between items-center gap-x-2 w-full pl-4 pr-2 py-1">
       <span className="shrink-0 text-sm font-medium text-gray-700 dark:text-gray-100">
-        Graph interval
+        Intervalo do gráfico
       </span>
       <SegmentedControl
-        ariaLabel="Graph data interval"
+        ariaLabel="Intervalo de dados do gráfico"
         options={controlOptions}
         selected={selectedInterval}
         onSelect={onIntervalClick}

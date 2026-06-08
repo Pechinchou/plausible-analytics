@@ -30,7 +30,7 @@ export function ModalLayout({
           <button
             type="button"
             onClick={onClose}
-            aria-label="Close modal"
+            aria-label="Fechar modal"
             className="text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300"
           >
             <XMarkIcon className="size-4.5" />
@@ -59,7 +59,7 @@ export function SaveButton({
       disabled={disabled}
       onClick={disabled ? () => {} : onSave}
     >
-      Save
+      Salvar
     </Button>
   )
 }

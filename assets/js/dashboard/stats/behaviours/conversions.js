@@ -27,11 +27,11 @@ export default function Conversions({ afterFetchData, onGoalFilterClick }) {
   function chooseMetrics() {
     return [
       metrics.createVisitors({
-        renderLabel: (_dashboardState) => 'Uniques',
+        renderLabel: (_dashboardState) => 'Únicos',
         meta: { plot: true }
       }),
       metrics.createEvents({
-        renderLabel: (_dashboardState) => 'Total',
+        renderLabel: (_dashboardState) => 'Total de eventos',
         meta: { hiddenOnMobile: true }
       }),
       metrics.createConversionRate(),
@@ -48,7 +48,7 @@ export default function Conversions({ afterFetchData, onGoalFilterClick }) {
       fetchData={fetchConversions}
       afterFetchData={afterFetchData}
       getFilterInfo={getFilterInfo}
-      keyLabel="Goal"
+      keyLabel="Meta"
       onClick={onGoalFilterClick}
       metrics={chooseMetrics()}
       color="bg-red-50 group-hover/row:bg-red-100"

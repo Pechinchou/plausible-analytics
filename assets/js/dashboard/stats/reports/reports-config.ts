@@ -74,9 +74,9 @@ export const BREAKDOWN_REPORTS: Record<
         'scroll_depth'
       ]
     },
-    detailsTitle: 'Top pages',
+    detailsTitle: 'Principais páginas',
     detailsPath: 'pages',
-    dimensionLabel: 'Page'
+    dimensionLabel: 'Página'
   },
   [BreakdownReportKey.entryPages]: {
     dimensions: ['visit:entry_page'],
@@ -90,9 +90,9 @@ export const BREAKDOWN_REPORTS: Record<
         'visit_duration'
       ]
     },
-    detailsTitle: 'Entry pages',
+    detailsTitle: 'Páginas de entrada',
     detailsPath: 'entry-pages',
-    dimensionLabel: 'Entry page',
+    dimensionLabel: 'Página de entrada',
     alwaysOnFilters: [['is_not', 'visit:entry_page', ['']]]
   },
   [BreakdownReportKey.exitPages]: {
@@ -101,66 +101,66 @@ export const BREAKDOWN_REPORTS: Record<
       ...COMMON_METRICS_BY_CONTEXT,
       defaultDetailedMetrics: ['visitors', 'percentage', 'visits', 'exit_rate']
     },
-    detailsTitle: 'Exit pages',
+    detailsTitle: 'Páginas de saída',
     detailsPath: 'exit-pages',
-    dimensionLabel: 'Exit page',
+    dimensionLabel: 'Página de saída',
     alwaysOnFilters: [['is_not', 'visit:exit_page', ['']]]
   },
   [BreakdownReportKey.browsers]: {
     dimensions: ['visit:browser'],
     metricsByContext: COMMON_METRICS_BY_CONTEXT,
-    detailsTitle: 'Browsers',
+    detailsTitle: 'Navegadores',
     detailsPath: 'browsers',
-    dimensionLabel: 'Browser'
+    dimensionLabel: 'Navegador'
   },
   [BreakdownReportKey.browserVersions]: {
     dimensions: ['visit:browser_version', 'visit:browser'],
     metricsByContext: COMMON_METRICS_BY_CONTEXT,
-    detailsTitle: 'Browser versions',
+    detailsTitle: 'Versões de navegador',
     detailsPath: 'browser-versions',
-    dimensionLabel: 'Browser version'
+    dimensionLabel: 'Versão do navegador'
   },
   [BreakdownReportKey.operatingSystems]: {
     dimensions: ['visit:os'],
     metricsByContext: COMMON_METRICS_BY_CONTEXT,
-    detailsTitle: 'Operating systems',
+    detailsTitle: 'Sistemas operacionais',
     detailsPath: 'operating-systems',
-    dimensionLabel: 'Operating system'
+    dimensionLabel: 'Sistema operacional'
   },
   [BreakdownReportKey.operatingSystemVersions]: {
     dimensions: ['visit:os_version', 'visit:os'],
     metricsByContext: COMMON_METRICS_BY_CONTEXT,
-    detailsTitle: 'Operating system versions',
+    detailsTitle: 'Versões de sistema operacional',
     detailsPath: 'operating-system-versions',
-    dimensionLabel: 'Operating system version'
+    dimensionLabel: 'Versão do sistema operacional'
   },
   [BreakdownReportKey.screenSizes]: {
     dimensions: ['visit:device'],
     metricsByContext: COMMON_METRICS_BY_CONTEXT,
-    detailsTitle: 'Devices',
+    detailsTitle: 'Dispositivos',
     detailsPath: 'screen-sizes',
-    dimensionLabel: 'Device'
+    dimensionLabel: 'Dispositivo'
   },
   [BreakdownReportKey.channels]: {
     dimensions: ['visit:channel'],
     metricsByContext: COMMON_METRICS_BY_CONTEXT,
-    detailsTitle: 'Top acquisition channels',
+    detailsTitle: 'Principais canais de aquisição',
     detailsPath: 'channels',
-    dimensionLabel: 'Channel'
+    dimensionLabel: 'Canal'
   },
   [BreakdownReportKey.sources]: {
     dimensions: ['visit:source'],
     metricsByContext: COMMON_METRICS_BY_CONTEXT,
-    detailsTitle: 'Top sources',
+    detailsTitle: 'Principais fontes',
     detailsPath: 'sources',
-    dimensionLabel: 'Source'
+    dimensionLabel: 'Fonte'
   },
   [BreakdownReportKey.referrers]: {
     dimensions: ['visit:referrer'],
     metricsByContext: COMMON_METRICS_BY_CONTEXT,
-    detailsTitle: 'Referrer drilldown',
+    detailsTitle: 'Detalhamento de referência',
     detailsPath: 'referrers/:referrer',
-    dimensionLabel: 'Referrer'
+    dimensionLabel: 'Referência'
   },
   [BreakdownReportKey.utmMediums]: {
     dimensions: ['visit:utm_medium'],
@@ -208,9 +208,9 @@ export const BREAKDOWN_REPORTS: Record<
       ...COMMON_METRICS_BY_CONTEXT,
       defaultDetailedMetrics: ['visitors', 'percentage']
     },
-    detailsTitle: 'Top countries',
+    detailsTitle: 'Principais países',
     detailsPath: 'countries',
-    dimensionLabel: 'Country',
+    dimensionLabel: 'País',
     alwaysOnFilters: [['is_not', 'visit:country', ['\0\0', 'ZZ']]]
   },
   [BreakdownReportKey.regions]: {
@@ -220,9 +220,9 @@ export const BREAKDOWN_REPORTS: Record<
       ...COMMON_METRICS_BY_CONTEXT,
       defaultDetailedMetrics: ['visitors', 'percentage']
     },
-    detailsTitle: 'Top regions',
+    detailsTitle: 'Principais regiões',
     detailsPath: 'regions',
-    dimensionLabel: 'Region',
+    dimensionLabel: 'Região',
     alwaysOnFilters: [['is_not', 'visit:region', ['']]]
   },
   [BreakdownReportKey.cities]: {
@@ -232,9 +232,9 @@ export const BREAKDOWN_REPORTS: Record<
       ...COMMON_METRICS_BY_CONTEXT,
       defaultDetailedMetrics: ['visitors', 'percentage']
     },
-    detailsTitle: 'Top cities',
+    detailsTitle: 'Principais cidades',
     detailsPath: 'cities',
-    dimensionLabel: 'City',
+    dimensionLabel: 'Cidade',
     alwaysOnFilters: [['is_not', 'visit:city', [0]]]
   }
 }

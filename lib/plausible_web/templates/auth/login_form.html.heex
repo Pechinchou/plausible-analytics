@@ -1,6 +1,6 @@
 <.focus_box>
   <:title>
-    {Phoenix.Flash.get(@flash, :login_title) || "Enter your account credentials"}
+    {Phoenix.Flash.get(@flash, :login_title) || "Entre com suas credenciais"}
   </:title>
   <:subtitle>
     <%= if Phoenix.Flash.get(@flash, :login_instructions) do %>
@@ -25,7 +25,7 @@
         autocomplete="current-password"
         id="current-password"
         field={f[:password]}
-        label="Password"
+        label="Senha"
       />
     </div>
 
@@ -35,7 +35,7 @@
 
     <.input type="hidden" field={f[:return_to]} />
 
-    <.button class="w-full" type="submit">Log in</.button>
+    <.button class="w-full" type="submit">Entrar</.button>
   </.form>
 
   <:footer>
@@ -43,11 +43,11 @@
       <:item :if={
         Keyword.fetch!(Application.get_env(:plausible, :selfhost), :disable_registration) == false
       }>
-        Don't have an account?
+        Não tem uma conta?
         <.styled_link href="/register">
-          Register
+          Registre-se
         </.styled_link>
-        instead.
+        aqui.
       </:item>
       <:item :if={ee?()}>
         <%= on_ee do %>
@@ -64,11 +64,11 @@
         <% end %>
       </:item>
       <:item>
-        Forgot password?
+        Esqueceu a senha?
         <.styled_link href="/password/request-reset">
-          Click here
+          Clique aqui
         </.styled_link>
-        to reset it.
+        para redefinir.
       </:item>
     </.focus_list>
   </:footer>

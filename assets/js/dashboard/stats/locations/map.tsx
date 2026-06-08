@@ -40,12 +40,12 @@ type CountryData = {
 
 function getMetricLabel(dashboardState: DashboardState) {
   if (hasConversionGoalFilter(dashboardState)) {
-    return { singular: 'Conversion', plural: 'Conversions' }
+    return { singular: 'Conversão', plural: 'Conversões' }
   }
   if (isRealTimeDashboard(dashboardState)) {
-    return { singular: 'Current visitor', plural: 'Current visitors' }
+    return { singular: 'Visitante ativo', plural: 'Visitantes ativos' }
   }
-  return { singular: 'Visitor', plural: 'Visitors' }
+  return { singular: 'Visitante', plural: 'Visitantes' }
 }
 
 const WorldMap = ({

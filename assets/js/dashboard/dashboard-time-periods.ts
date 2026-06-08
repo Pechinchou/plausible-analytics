@@ -62,10 +62,10 @@ export type DashboardTimeSettings = {
 }
 
 export const COMPARISON_MODES = {
-  [ComparisonMode.off]: 'Disable comparison',
-  [ComparisonMode.previous_period]: 'Previous period',
-  [ComparisonMode.year_over_year]: 'Year over year',
-  [ComparisonMode.custom]: 'Custom period'
+  [ComparisonMode.off]: 'Desativar comparação',
+  [ComparisonMode.previous_period]: 'Período anterior',
+  [ComparisonMode.year_over_year]: 'Ano a ano',
+  [ComparisonMode.custom]: 'Período personalizado'
 }
 
 export enum ComparisonMatchMode {
@@ -74,8 +74,8 @@ export enum ComparisonMatchMode {
 }
 
 export const COMPARISON_MATCH_MODE_LABELS = {
-  [ComparisonMatchMode.MatchDayOfWeek]: 'Match day of week',
-  [ComparisonMatchMode.MatchExactDate]: 'Match exact date'
+  [ComparisonMatchMode.MatchDayOfWeek]: 'Corresponder dia da semana',
+  [ComparisonMatchMode.MatchExactDate]: 'Corresponder data exata'
 }
 
 export const DEFAULT_COMPARISON_MODE = ComparisonMode.previous_period
@@ -326,7 +326,7 @@ export const getDatePeriodGroups = ({
   const groups: LinkItem[][] = [
     [
       [
-        ['Today', 'D'],
+        ['Hoje', 'D'],
         {
           search: (s) => ({
             ...s,
@@ -342,7 +342,7 @@ export const getDatePeriodGroups = ({
         }
       ],
       [
-        ['Yesterday', 'E'],
+        ['Ontem', 'E'],
         {
           search: (s) => ({
             ...s,
@@ -358,7 +358,7 @@ export const getDatePeriodGroups = ({
         }
       ],
       [
-        ['Realtime', 'R'],
+        ['Tempo real', 'R'],
         {
           search: (s) => ({
             ...s,
@@ -374,7 +374,7 @@ export const getDatePeriodGroups = ({
     ],
     [
       [
-        ['Last 24 Hours', 'H'],
+        ['Últimas 24 Horas', 'H'],
         {
           search: (s) => ({
             ...s,
@@ -388,7 +388,7 @@ export const getDatePeriodGroups = ({
         }
       ],
       [
-        ['Last 7 Days', 'W'],
+        ['Últimos 7 Dias', 'W'],
         {
           search: (s) => ({
             ...s,
@@ -402,7 +402,7 @@ export const getDatePeriodGroups = ({
         }
       ],
       [
-        ['Last 28 Days', 'F'],
+        ['Últimos 28 Dias', 'F'],
         {
           search: (s) => ({
             ...s,
@@ -416,7 +416,7 @@ export const getDatePeriodGroups = ({
         }
       ],
       [
-        ['Last 30 Days', 'T'],
+        ['Últimos 30 Dias', 'T'],
         {
           hidden: true,
           search: (s) => ({
@@ -431,7 +431,7 @@ export const getDatePeriodGroups = ({
         }
       ],
       [
-        ['Last 91 Days', 'N'],
+        ['Últimos 91 Dias', 'N'],
         {
           search: (s) => ({
             ...s,
@@ -447,7 +447,7 @@ export const getDatePeriodGroups = ({
     ],
     [
       [
-        ['Month to Date', 'M'],
+        ['Mês até hoje', 'M'],
         {
           search: (s) => ({
             ...s,
@@ -462,7 +462,7 @@ export const getDatePeriodGroups = ({
         }
       ],
       [
-        ['Last Month', 'P'],
+        ['Mês passado', 'P'],
         {
           search: (s) => ({
             ...s,
@@ -480,7 +480,7 @@ export const getDatePeriodGroups = ({
     ],
     [
       [
-        ['Year to Date', 'Y'],
+        ['Ano até hoje', 'Y'],
         {
           search: (s) => ({
             ...s,
@@ -495,7 +495,7 @@ export const getDatePeriodGroups = ({
         }
       ],
       [
-        ['Last 6 months', 'S'],
+        ['Últimos 6 meses', 'S'],
         {
           hidden: true,
           search: (s) => ({
@@ -509,7 +509,7 @@ export const getDatePeriodGroups = ({
         }
       ],
       [
-        ['Last 12 Months', 'L'],
+        ['Últimos 12 Meses', 'L'],
         {
           search: (s) => ({
             ...s,
@@ -527,7 +527,7 @@ export const getDatePeriodGroups = ({
 
   const lastGroup: LinkItem[] = [
     [
-      ['All time', 'A'],
+      ['Todo o período', 'A'],
       {
         search: (s) => ({
           ...s,
@@ -558,8 +558,8 @@ export const getCompareLinkItem = ({
 }): LinkItem => [
   [
     isComparisonEnabled(dashboardState.comparison)
-      ? 'Disable comparison'
-      : 'Compare',
+      ? 'Desativar comparação'
+      : 'Comparar',
     'X'
   ],
   {
@@ -678,7 +678,7 @@ export function getCurrentPeriodDisplayName({
 }) {
   if (dashboardState.period === 'day') {
     if (isToday(site, dashboardState.date)) {
-      return 'Today'
+      return 'Hoje'
     }
     return formatDay(
       dashboardState.date,
@@ -687,45 +687,45 @@ export function getCurrentPeriodDisplayName({
   }
 
   if (dashboardState.period === '24h') {
-    return 'Last 24 Hours'
+    return 'Últimas 24 Horas'
   }
   if (dashboardState.period === '7d') {
-    return 'Last 7 days'
+    return 'Últimos 7 dias'
   }
   if (dashboardState.period === '28d') {
-    return 'Last 28 days'
+    return 'Últimos 28 dias'
   }
   if (dashboardState.period === '30d') {
-    return 'Last 30 days'
+    return 'Últimos 30 dias'
   }
   if (dashboardState.period === '91d') {
-    return 'Last 91 days'
+    return 'Últimos 91 dias'
   }
   if (dashboardState.period === 'month') {
     if (isThisMonth(site, dashboardState.date)) {
-      return 'Month to Date'
+      return 'Mês até hoje'
     }
     return formatMonthYYYY(dashboardState.date)
   }
   if (dashboardState.period === '6mo') {
-    return 'Last 6 months'
+    return 'Últimos 6 meses'
   }
   if (dashboardState.period === '12mo') {
-    return 'Last 12 months'
+    return 'Últimos 12 meses'
   }
   if (dashboardState.period === 'year') {
     if (isThisYear(site, dashboardState.date)) {
-      return 'Year to Date'
+      return 'Ano até hoje'
     }
     return formatYear(dashboardState.date)
   }
   if (dashboardState.period === 'all') {
-    return 'All time'
+    return 'Todo o período'
   }
   if (dashboardState.period === 'custom') {
     return formatDateRange(site, dashboardState.from, dashboardState.to)
   }
-  return 'Realtime'
+  return 'Tempo real'
 }
 
 export function getCurrentComparisonPeriodDisplayName({

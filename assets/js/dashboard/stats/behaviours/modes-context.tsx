@@ -11,22 +11,22 @@ export enum Mode {
 
 export const MODES = {
   [Mode.CONVERSIONS]: {
-    title: 'Goal conversions',
+    title: 'Conversões de metas',
     isAvailableKey: null, // always available
     optedOutKey: `${Mode.CONVERSIONS}OptedOut`
   },
   [Mode.PROPS]: {
-    title: 'Custom properties',
+    title: 'Propriedades personalizadas',
     isAvailableKey: `${Mode.PROPS}Available`,
     optedOutKey: `${Mode.PROPS}OptedOut`
   },
   [Mode.FUNNELS]: {
-    title: 'Funnels',
+    title: 'Funis',
     isAvailableKey: `${Mode.FUNNELS}Available`,
     optedOutKey: `${Mode.FUNNELS}OptedOut`
   },
   [Mode.EXPLORATION]: {
-    title: 'Exploration',
+    title: 'Exploração',
     isAvailableKey: `${Mode.FUNNELS}Available`,
     optedOutKey: null
   }

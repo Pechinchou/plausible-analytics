@@ -22,11 +22,11 @@ export default function Properties({ propKey, afterFetchData }) {
   function chooseMetrics() {
     return [
       metrics.createVisitors({
-        renderLabel: (_dashboardState) => 'Visitors',
+        renderLabel: (_dashboardState) => 'Visitantes',
         meta: { plot: true }
       }),
       metrics.createEvents({
-        renderLabel: (_dashboardState) => 'Events',
+        renderLabel: (_dashboardState) => 'Eventos',
         meta: { hiddenOnMobile: true }
       }),
       hasConversionGoalFilter(dashboardState) && metrics.createConversionRate(),
@@ -60,7 +60,7 @@ export default function Properties({ propKey, afterFetchData }) {
   if (!propKey) {
     return (
       <div className="flex-1 flex items-center justify-center font-medium text-gray-500 dark:text-gray-400">
-        No custom properties found
+        Nenhuma propriedade personalizada encontrada
       </div>
     )
   }

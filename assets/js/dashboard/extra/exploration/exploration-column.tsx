@@ -144,11 +144,11 @@ function CandidateCard({
   const iconTooltipInfo =
     isCustomEvent || isGoal
       ? isGoal
-        ? 'Goal'
-        : 'Custom event'
+        ? 'Meta'
+        : 'Evento personalizado'
       : step.includes_subpaths
-        ? `Grouped pages: ${numberShortFormatter(step.subpaths_count)} pages with this prefix`
-        : 'Pageview'
+        ? `Páginas agrupadas: ${numberShortFormatter(step.subpaths_count)} páginas com este prefixo`
+        : 'Visualização de página'
 
   const iconSvg =
     isCustomEvent || isGoal ? (
@@ -229,12 +229,12 @@ function ColumnEmptyState({
   if (active && rateLimited) {
     return (
       <span>
-        Too many requests, please wait a moment and{' '}
+        Muitas requisições, aguarde um momento e{' '}
         <button
           onClick={onRetry}
           className="underline hover:text-gray-600 dark:hover:text-gray-300 focus:outline-none"
         >
-          try again
+          tente novamente
         </button>
       </span>
     )
@@ -244,9 +244,9 @@ function ColumnEmptyState({
     const prompt =
       colIndex === 1
         ? direction === DIRECTION.BACKWARD
-          ? 'Select an end point to continue'
-          : 'Select a starting point to continue'
-        : 'Select an event to continue'
+          ? 'Selecione um ponto final para continuar'
+          : 'Selecione um ponto inicial para continuar'
+        : 'Selecione um evento para continuar'
 
     return (
       <span className="flex flex-col items-center gap-2">
@@ -260,7 +260,7 @@ function ColumnEmptyState({
     return (
       <span className="flex flex-col items-center gap-2">
         <MagnifyingGlassIcon className="size-4.5" />
-        No events found
+        Nenhum evento encontrado
       </span>
     )
   }
@@ -268,7 +268,7 @@ function ColumnEmptyState({
   return (
     <span className="flex flex-col items-center gap-2">
       <FlagIcon className="size-4.5" />
-      No further steps found for the selected period and filters
+      Nenhuma etapa adicional encontrada para o período e filtros selecionados
     </span>
   )
 }
@@ -295,7 +295,7 @@ export function MaxDepthColumn({
       <div className="h-92 flex items-center justify-center max-w-2/3 mx-auto text-center text-sm text-pretty text-gray-400 dark:text-gray-500">
         <span className="flex flex-col items-center gap-2">
           <FlagIcon className="size-4.5" />
-          {`You've reached the maximum journey depth of ${maxJourneySteps} steps.`}
+          {`Você atingiu a profundidade máxima de ${maxJourneySteps} etapas.`}
         </span>
       </div>
     </div>
@@ -405,7 +405,7 @@ export function ExplorationColumn({
             data-testid="search-input"
             type="text"
             defaultValue={filter}
-            placeholder="Search"
+            placeholder="Buscar"
             onChange={debouncedFilterChange}
             className="peer max-w-48 w-full h-full py-0 text-xs dark:text-gray-100 block border-gray-300 dark:border-gray-700 rounded-md dark:bg-gray-700 dark:placeholder:text-gray-400 focus:outline-none focus:ring-3 focus:ring-indigo-500/20 dark:focus:ring-indigo-500/25 focus:border-indigo-500"
           />
@@ -464,7 +464,7 @@ export function ExplorationColumn({
                       : 'text-gray-600 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-gray-100'
                   }`}
                 >
-                  <span>{`Show ${showMoreCount} more`}</span>
+                  <span>{`Mostrar mais ${showMoreCount}`}</span>
                   <EllipsisHorizontalIcon className="size-4 shrink-0" />
                 </div>
               </button>

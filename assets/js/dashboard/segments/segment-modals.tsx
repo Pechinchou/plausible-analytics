@@ -41,7 +41,7 @@ import { Placeholder } from '../components/placeholder'
 
 const inModalSectionLabelClassName = 'text-sm font-semibold dark:text-gray-100'
 
-const nameInputProps = { id: 'name', label: 'Segment name' }
+const nameInputProps = { id: 'name', label: 'Nome do segmento' }
 
 interface ApiRequestProps {
   status: MutationStatus
@@ -72,7 +72,7 @@ export const CreateSegmentModal = ({
     onSave: (input: Pick<SavedSegment, 'name' | 'type'>) => void
   }) => {
   const defaultName = segment?.name
-    ? `Copy of ${segment.name}`.slice(0, 255)
+    ? `Cópia de ${segment.name}`.slice(0, 255)
     : ''
   const [name, setName] = useState(defaultName)
   const defaultType =
@@ -93,7 +93,7 @@ export const CreateSegmentModal = ({
       : null
 
   return (
-    <ModalLayout title="Create segment" onClose={onClose}>
+    <ModalLayout title="Criar segmento" onClose={onClose}>
       <LabeledTextInput
         {...nameInputProps}
         value={name}
@@ -107,7 +107,7 @@ export const CreateSegmentModal = ({
       />
       <ModalFooter>
         <Button theme="secondary" size="sm" onClick={onClose}>
-          Cancel
+          Cancelar
         </Button>
         <SaveButton
           disabled={status === 'pending' || disabledMessage !== null}
@@ -126,7 +126,7 @@ export const CreateSegmentModal = ({
           errorMessage={
             error instanceof ApiError
               ? error.message
-              : 'Something went wrong creating segment'
+              : 'Ocorreu um erro ao criar o segmento'
           }
           onClose={reset}
         />
@@ -137,8 +137,8 @@ export const CreateSegmentModal = ({
 
 function getLinksDeleteNotice(links: string[]) {
   return links.length === 1
-    ? 'This segment is used in a shared link. To delete it, you also need to delete the shared link.'
-    : `This segment is used in ${links.length} shared links. To delete it, you also need to delete the shared links.`
+    ? 'Este segmento é usado em um link compartilhado. Para excluí-lo, você também precisa excluir o link compartilhado.'
+    : `Este segmento é usado em ${links.length} links compartilhados. Para excluí-lo, você também precisa excluir os links compartilhados.`
 }
 
 export const DeleteSegmentModal = ({
@@ -173,14 +173,14 @@ export const DeleteSegmentModal = ({
 
   return (
     <ModalLayout
-      title={`Delete ${SEGMENT_TYPE_LABELS[segment.type].toLowerCase()}`}
+      title={`Excluir ${SEGMENT_TYPE_LABELS[segment.type].toLowerCase()}`}
       onClose={onClose}
     >
       <div className="flex flex-col gap-y-2">
         <p className="text-sm dark:text-gray-100">
-          {`You're about to delete `}
+          {`Você está prestes a excluir `}
           <span className="break-all font-semibold">{`"${segment.name}"`}</span>
-          {`. Are you sure?`}
+          {`. Tem certeza?`}
         </p>
         {linksQuery.status === 'pending' && (
           <div className="loading sm">
@@ -198,7 +198,7 @@ export const DeleteSegmentModal = ({
         )}
         {linksQuery.status === 'error' && (
           <ErrorPanel
-            errorMessage="Error loading related shared links"
+            errorMessage="Erro ao carregar links compartilhados relacionados"
             onRetry={linksQuery.refetch}
           />
         )}
@@ -217,13 +217,13 @@ export const DeleteSegmentModal = ({
             checked={confirmed}
             onChange={(e) => setConfirmed(e.currentTarget.checked)}
           >
-            Yes, delete the associated shared links
+            Sim, excluir os links compartilhados associados
           </Checkbox>
         </>
       )}
       <ModalFooter>
         <Button theme="secondary" size="sm" onClick={onClose}>
-          Cancel
+          Cancelar
         </Button>
         <Button
           theme="danger"
@@ -237,7 +237,7 @@ export const DeleteSegmentModal = ({
                 }
           }
         >
-          Delete
+          Excluir
         </Button>
       </ModalFooter>
       {error !== null && (
@@ -246,7 +246,7 @@ export const DeleteSegmentModal = ({
           errorMessage={
             error instanceof ApiError
               ? error.message
-              : 'Something went wrong deleting segment'
+              : 'Ocorreu um erro ao excluir o segmento'
           }
           onClose={reset}
         />
@@ -258,7 +258,7 @@ export const DeleteSegmentModal = ({
 const RelatedSharedLinks = ({ sharedLinks }: { sharedLinks: string[] }) => {
   return (
     <div className="flex flex-col gap-y-2">
-      <p className={inModalSectionLabelClassName}>Shared links</p>
+      <p className={inModalSectionLabelClassName}>Links compartilhados</p>
       <FilterPillsList
         className="flex-wrap"
         direction="horizontal"
@@ -302,12 +302,12 @@ const SegmentTypeSelector = ({
         {
           type: SegmentType.personal,
           name: SEGMENT_TYPE_LABELS[SegmentType.personal],
-          description: 'Visible only to you'
+          description: 'Visível apenas para você'
         },
         {
           type: SegmentType.site,
           name: SEGMENT_TYPE_LABELS[SegmentType.site],
-          description: 'Visible to others on the site'
+          description: 'Visível para outros no site'
         }
       ]}
       value={type}
@@ -330,14 +330,14 @@ const SegmentTypeDisabledMessage = ({
 }): Exclude<ReactNode, undefined> => {
   switch (messageType) {
     case 'no-permissions': {
-      return "You don't have enough permissions to change segment to this type"
+      return "Você não tem permissões suficientes para alterar o segmento para este tipo"
     }
     case 'upgrade-subscription-yourself': {
       return (
         <>
-          To use this segment type,{' '}
+          Para usar este tipo de segmento,{' '}
           <a href="/billing/choose-plan" className="underline">
-            please upgrade your subscription
+            faça upgrade da sua assinatura
           </a>
         </>
       )
@@ -345,8 +345,7 @@ const SegmentTypeDisabledMessage = ({
     case 'upgrade-subscription-reach-out': {
       return (
         <>
-          To use this segment type, please reach out to a team owner to upgrade
-          their subscription
+          Para usar este tipo de segmento, entre em contato com o proprietário da equipe para fazer upgrade da assinatura
         </>
       )
     }
@@ -380,7 +379,7 @@ export const UpdateSegmentModal = ({
       : null
 
   return (
-    <ModalLayout title="Update segment" onClose={onClose}>
+    <ModalLayout title="Atualizar segmento" onClose={onClose}>
       <LabeledTextInput
         {...nameInputProps}
         value={name}
@@ -394,7 +393,7 @@ export const UpdateSegmentModal = ({
       />
       <ModalFooter>
         <Button theme="secondary" size="sm" onClick={onClose}>
-          Cancel
+          Cancelar
         </Button>
         <SaveButton
           disabled={status === 'pending' || disabledMessage !== null}
@@ -413,7 +412,7 @@ export const UpdateSegmentModal = ({
           errorMessage={
             error instanceof ApiError
               ? error.message
-              : 'Something went wrong updating segment'
+              : 'Ocorreu um erro ao atualizar o segmento'
           }
           onClose={reset}
         />
@@ -431,7 +430,7 @@ const FiltersInSegment = ({
 }) => {
   return (
     <div className={classNames('flex flex-col gap-y-2', className)}>
-      <p className={inModalSectionLabelClassName}>Filters in segment</p>
+      <p className={inModalSectionLabelClassName}>Filtros no segmento</p>
       <FilterPillsList
         className="flex-wrap"
         direction="horizontal"
@@ -481,7 +480,7 @@ export const SegmentModal = ({ id }: { id: SavedSegment['id'] }) => {
   const onClose = () => navigate({ path: rootRoute.path, search: (s) => s })
 
   return (
-    <ModalLayout title="Segment details" onClose={onClose}>
+    <ModalLayout title="Detalhes do segmento" onClose={onClose}>
       <div className="flex flex-col gap-y-6 dark:text-gray-100">
         <div className="text-sm flex flex-col gap-y-0.5">
           <h2 className="font-semibold break-all">
@@ -525,7 +524,7 @@ export const SegmentModal = ({ id }: { id: SavedSegment['id'] }) => {
                     })
                   }
                 >
-                  Remove filter
+                  Remover filtro
                 </Button>
               )}
 
@@ -542,7 +541,7 @@ export const SegmentModal = ({ id }: { id: SavedSegment['id'] }) => {
                     expandedSegment: data
                   }}
                 >
-                  Edit segment
+                  Editar segmento
                 </AppNavigationLink>
               )}
             </ModalFooter>
@@ -554,7 +553,7 @@ export const SegmentModal = ({ id }: { id: SavedSegment['id'] }) => {
             errorMessage={
               error instanceof ApiError
                 ? error.message
-                : 'Something went wrong loading segment'
+                : 'Ocorreu um erro ao carregar o segmento'
             }
             onRetry={() => window.location.reload()}
           />

@@ -94,12 +94,12 @@ export default function Pages() {
               [
                 {
                   label: hasConversionGoalFilter(dashboardState)
-                    ? 'Conversion pages'
-                    : 'Top pages',
+                    ? 'Páginas de conversão'
+                    : 'Principais páginas',
                   value: BreakdownReportKey.pages
                 },
-                { label: 'Entry pages', value: BreakdownReportKey.entryPages },
-                { label: 'Exit pages', value: BreakdownReportKey.exitPages }
+                { label: 'Páginas de entrada', value: BreakdownReportKey.entryPages },
+                { label: 'Páginas de saída', value: BreakdownReportKey.exitPages }
               ] as const
             ).map(({ value, label }) => (
               <TabButton

@@ -16,7 +16,7 @@ export default function ImportedWarningBubble({
 
   const tooltipMessage =
     importsSkipReason === 'unsupported_query' && !isRealtime
-      ? 'Imported data is excluded due to applied filters'
+      ? 'Dados importados excluídos devido aos filtros aplicados'
       : null
 
   if (tooltipMessage) {

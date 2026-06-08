@@ -45,14 +45,14 @@ export function FilterPill({
         <>
           <AppNavigationLink
             className={contentClassName}
-            title={`Edit filter: ${plainText}`}
+            title={`Editar filtro: ${plainText}`}
             {...interactive.navigationTarget}
           >
             <PillContent>{children}</PillContent>
           </AppNavigationLink>
           {!!interactive.onRemoveClick && (
             <button
-              title={`Remove filter: ${plainText}`}
+              title={`Remover filtro: ${plainText}`}
               className="flex items-center h-full pl-1.5 pr-2.5 cursor-pointer hover:text-indigo-700 dark:hover:text-indigo-500 "
               onClick={interactive.onRemoveClick}
             >

@@ -30,37 +30,37 @@ export const getMetricLabel = (
 ): string => {
   switch (metric) {
     case 'visitors':
-      return hasConversionGoalFilter ? 'Unique conversions' : 'Unique visitors'
+      return hasConversionGoalFilter ? 'Conversões únicas' : 'Visitantes únicos'
     case 'events':
-      return hasConversionGoalFilter ? 'Total conversions' : 'Total events'
+      return hasConversionGoalFilter ? 'Total de conversões' : 'Total de eventos'
     case 'visits':
-      return 'Total visits'
+      return 'Total de visitas'
     case 'pageviews':
-      return 'Total pageviews'
+      return 'Total de visualizações'
     case 'views_per_visit':
-      return 'Views per visit'
+      return 'Visualizações por visita'
     case 'bounce_rate':
-      return 'Bounce rate'
+      return 'Taxa de rejeição'
     case 'visit_duration':
-      return 'Visit duration'
+      return 'Duração da visita'
     case 'time_on_page':
-      return 'Time on page'
+      return 'Tempo na página'
     case 'scroll_depth':
-      return 'Scroll depth'
+      return 'Profundidade de rolagem'
     case 'conversion_rate':
-      return 'Conversion rate'
+      return 'Taxa de conversão'
     case 'total_revenue':
-      return 'Total revenue'
+      return 'Receita total'
     case 'average_revenue':
-      return 'Average revenue'
+      return 'Receita média'
     case 'percentage':
-      return 'Percentage'
+      return 'Porcentagem'
     case 'group_conversion_rate':
-      return 'Conversion rate'
+      return 'Taxa de conversão'
     case 'total_visitors':
-      return 'Total visitors'
+      return 'Total de visitantes'
     case 'exit_rate':
-      return 'Exit rate'
+      return 'Taxa de saída'
   }
 }
 
@@ -105,10 +105,10 @@ const getEntryPagesBreakdownMetricLabel = (
   }: { hasConversionGoalFilter: boolean; isRealtime: boolean }
 ): string => {
   if (metric === 'visitors' && !hasConversionGoalFilter && !isRealtime) {
-    return 'Unique entrances'
+    return 'Entradas únicas'
   }
   if (metric === 'visits' && !hasConversionGoalFilter && !isRealtime) {
-    return 'Total entrances'
+    return 'Total de entradas'
   }
 
   return getDefaultBreakdownMetricLabel(metric, {
@@ -125,10 +125,10 @@ const getExitPagesBreakdownMetricLabel = (
   }: { hasConversionGoalFilter: boolean; isRealtime: boolean }
 ): string => {
   if (metric === 'visitors' && !hasConversionGoalFilter && !isRealtime) {
-    return 'Unique exits'
+    return 'Saídas únicas'
   }
   if (metric === 'visits' && !hasConversionGoalFilter && !isRealtime) {
-    return 'Total exits'
+    return 'Total de saídas'
   }
 
   return getDefaultBreakdownMetricLabel(metric, {
@@ -140,7 +140,7 @@ const getExitPagesBreakdownMetricLabel = (
 const getConversionsBreakdownMetricLabel = (metric: Metric): string => {
   switch (metric) {
     case 'visitors':
-      return 'Uniques'
+      return 'Únicos'
     case 'events':
       return 'Total'
     default:
@@ -161,20 +161,20 @@ const getDefaultBreakdownMetricLabel = (
   switch (metric) {
     case 'visitors':
       return hasConversionGoalFilter
-        ? 'Conversions'
+        ? 'Conversões'
         : isRealtime
-          ? 'Current visitors'
-          : 'Visitors'
+          ? 'Visitantes ativos'
+          : 'Visitantes'
     case 'group_conversion_rate':
       return 'CR'
     case 'conversion_rate':
       return 'CR'
     case 'average_revenue':
-      return 'Average'
+      return 'Média'
     case 'total_revenue':
-      return 'Revenue'
+      return 'Receita'
     case 'pageviews':
-      return 'Pageviews'
+      return 'Visualizações'
     default:
       return getMetricLabel(metric, { hasConversionGoalFilter })
   }

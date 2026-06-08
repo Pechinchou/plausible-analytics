@@ -38,11 +38,11 @@ export function SpecialGoalPropBreakdown({ prop, afterFetchData }) {
   function chooseMetrics() {
     return [
       metrics.createVisitors({
-        renderLabel: (_dashboardState) => 'Visitors',
+        renderLabel: (_dashboardState) => 'Visitantes',
         meta: { plot: true }
       }),
       metrics.createEvents({
-        renderLabel: (_dashboardState) => 'Events',
+        renderLabel: (_dashboardState) => 'Eventos',
         meta: { hiddenOnMobile: true }
       }),
       metrics.createConversionRate()

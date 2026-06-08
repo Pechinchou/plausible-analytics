@@ -76,7 +76,7 @@ export const SearchableSegmentsSection = ({
       <MenuSeparator />
       <div className="flex items-center py-2 px-4">
         <div className="text-sm font-bold uppercase text-indigo-500 dark:text-indigo-400 mr-4">
-          Segments
+          Segmentos
         </div>
         {showSearch && (
           <SearchInput
@@ -133,7 +133,7 @@ export const SearchableSegmentsSection = ({
               )}
               onClick={handleShowAll}
             >
-              {`Show ${countOfMoreToShow} more`}
+              {`Mostrar mais ${countOfMoreToShow}`}
               <EllipsisHorizontalIcon className="block w-5 h-5" />
             </button>
           </Tooltip>
@@ -152,7 +152,7 @@ export const SearchableSegmentsSection = ({
             )}
             onClick={handleClearSearch}
           >
-            No segments found. Clear search to show all.
+            Nenhum segmento encontrado. Limpe a busca para ver todos.
           </button>
         </Tooltip>
       )}

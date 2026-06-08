@@ -12,8 +12,8 @@ export const SearchInput = ({
   searchRef,
   onSearch,
   className,
-  placeholderFocusedOrMobile = 'Search',
-  placeholderUnfocusedOnlyDesktop = 'Press / to search'
+  placeholderFocusedOrMobile = 'Buscar',
+  placeholderUnfocusedOnlyDesktop = 'Pressione / para buscar'
 }: {
   searchRef: RefObject<HTMLInputElement>
   onSearch: (value: string) => void

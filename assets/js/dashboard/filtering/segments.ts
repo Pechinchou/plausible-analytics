@@ -160,8 +160,8 @@ export function getSearchToSetSegmentFilter(
 }
 
 export const SEGMENT_TYPE_LABELS = {
-  [SegmentType.personal]: 'Personal segment',
-  [SegmentType.site]: 'Site segment'
+  [SegmentType.personal]: 'Segmento pessoal',
+  [SegmentType.site]: 'Segmento do site'
 }
 
 export function resolveFilters(

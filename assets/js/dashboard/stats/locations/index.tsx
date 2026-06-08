@@ -181,13 +181,13 @@ export function Locations() {
           <TabWrapper>
             {(
               [
-                { label: 'Map', value: 'map' },
+                { label: 'Mapa', value: 'map' },
                 {
-                  label: 'Countries',
+                  label: 'Países',
                   value: BreakdownReportKey.countries
                 },
-                { label: 'Regions', value: BreakdownReportKey.regions },
-                { label: 'Cities', value: BreakdownReportKey.cities }
+                { label: 'Regiões', value: BreakdownReportKey.regions },
+                { label: 'Cidades', value: BreakdownReportKey.cities }
               ] as const
             ).map(({ label, value }) => (
               <TabButton

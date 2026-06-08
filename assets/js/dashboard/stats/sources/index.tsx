@@ -258,11 +258,11 @@ export default function Sources() {
 
   function sourceTabLabel() {
     if (isGoogleSourceFilter(dashboardState)) {
-      return 'Search terms'
+      return 'Termos de busca'
     } else if (isFixedSourceFilter(dashboardState)) {
-      return 'Top referrers'
+      return 'Principais referências'
     } else {
-      return 'Sources'
+      return 'Fontes'
     }
   }
 
@@ -272,7 +272,7 @@ export default function Sources() {
         <div className="flex gap-x-3">
           <TabWrapper>
             {[
-              { value: BreakdownReportKey.channels, label: 'Channels' },
+              { value: BreakdownReportKey.channels, label: 'Canais' },
               { value: BreakdownReportKey.sources, label: sourceTabLabel() }
             ].map(({ value, label }) => (
               <TabButton
@@ -295,7 +295,7 @@ export default function Sources() {
             >
               {isUtmTab(currentTab)
                 ? BREAKDOWN_REPORTS[currentTab].detailsTitle
-                : 'Campaigns'}
+                : 'Campanhas'}
             </DropdownTabButton>
           </TabWrapper>
           {currentReportKey !== SEARCH_TERMS_KEY && (

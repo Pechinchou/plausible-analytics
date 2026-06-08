@@ -28,17 +28,17 @@ export function getFilterListItems({
         modals: ['page', 'hostname']
       },
       {
-        title: 'Acquisition',
+        title: 'Aquisição',
         modals: ['source', 'utm']
       }
     ],
     [
       {
-        title: 'Device',
+        title: 'Dispositivo',
         modals: ['location', 'screen', 'browser', 'os']
       },
       {
-        title: 'Behaviour',
+        title: 'Comportamento',
         modals: ['goal', !!propsAvailable && 'props']
       }
     ]
@@ -64,7 +64,7 @@ const FilterMenuItems = ({ closeDropdown }: { closeDropdown: () => void }) => {
       >
         <FilterIcon className="block size-3.5" />
         <span className={popover.toggleButton.classNames.truncatedText}>
-          Filter
+          Filtrar
         </span>
       </Popover.Button>
       <Transition
