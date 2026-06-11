@@ -1,5 +1,5 @@
-<.notice title="Danger zone" theme={:red}>
-  Destructive actions below can result in irrecoverable data loss. Be careful.
+<.notice title="Zona de perigo" theme={:red}>
+  As ações abaixo podem resultar em perda irreversível de dados. Tenha cuidado.
 </.notice>
 
 <.settings_tiles>
@@ -9,30 +9,30 @@
   )}
 
   <.tile docs="reset-site-data">
-    <:title>Reset stats</:title>
-    <:subtitle>Reset all stats but keep the site configuration intact.</:subtitle>
+    <:title>Redefinir estatísticas</:title>
+    <:subtitle>Redefine todas as estatísticas, mas mantém a configuração do site intacta.</:subtitle>
     <.button_link
       href={Routes.site_path(@conn, :reset_stats, @site.domain)}
       method="delete"
-      data-confirm="Resetting the stats cannot be reversed. Are you sure?"
+      data-confirm="A redefinição das estatísticas não pode ser desfeita. Tem certeza?"
       theme="danger"
       mt?={false}
     >
-      Reset {@site.domain} stats
+      Redefinir estatísticas de {@site.domain}
     </.button_link>
   </.tile>
 
   <.tile docs="delete-site-data">
-    <:title>Delete site</:title>
-    <:subtitle>Permanently delete all stats and site settings.</:subtitle>
+    <:title>Excluir site</:title>
+    <:subtitle>Exclui permanentemente todas as estatísticas e configurações do site.</:subtitle>
     <.button_link
       href={Routes.site_path(@conn, :delete_site, @site.domain)}
       theme="danger"
       method="delete"
-      data-confirm="Deleting the site data cannot be reversed. Are you sure?"
+      data-confirm="A exclusão dos dados do site não pode ser desfeita. Tem certeza?"
       mt?={false}
     >
-      Delete {@site.domain}
+      Excluir {@site.domain}
     </.button_link>
   </.tile>
 </.settings_tiles>

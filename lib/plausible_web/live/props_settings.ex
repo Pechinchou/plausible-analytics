@@ -52,11 +52,11 @@ defmodule PlausibleWeb.Live.PropsSettings do
         current_team={@site_team}
       >
         <:title>
-          Custom properties
+          Propriedades personalizadas
         </:title>
         <:subtitle :if={Enum.count(@all_props) > 0}>
-          Attach custom properties when sending a pageview or an event to
-          create custom metrics.
+          Anexe propriedades personalizadas ao enviar um pageview ou evento para
+          criar métricas customizadas.
         </:subtitle>
         <%= if @add_prop? do %>
           {live_render(
@@ -125,7 +125,7 @@ defmodule PlausibleWeb.Live.PropsSettings do
 
     socket =
       socket
-      |> put_live_flash(:success, "Property removed successfully")
+      |> put_live_flash(:success, "Propriedade removida com sucesso")
       |> assign(
         all_props: Enum.reject(socket.assigns.all_props, &(&1 == prop)),
         displayed_props: Enum.reject(socket.assigns.displayed_props, &(&1 == prop)),
@@ -162,7 +162,7 @@ defmodule PlausibleWeb.Live.PropsSettings do
         displayed_props: props,
         site: %{socket.assigns.site | allowed_event_props: props}
       )
-      |> put_live_flash(:success, "Properties added successfully")
+      |> put_live_flash(:success, "Propriedades adicionadas com sucesso")
 
     {:noreply, socket}
   end
@@ -183,7 +183,7 @@ defmodule PlausibleWeb.Live.PropsSettings do
         displayed_props: allowed_event_props,
         site: %{site | allowed_event_props: allowed_event_props}
       )
-      |> put_live_flash(:success, "Property added successfully")
+      |> put_live_flash(:success, "Propriedade adicionada com sucesso")
 
     {:noreply, socket}
   end

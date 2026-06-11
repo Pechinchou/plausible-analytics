@@ -35,10 +35,10 @@ defmodule PlausibleWeb.Live.SiteTransferSettings do
     my_team_notice =
       cond do
         not is_nil(socket.assigns[:my_team]) and socket.assigns.my_team.id == site.team_id ->
-          "The site is already in your personal sites."
+          "O site já está nos seus sites pessoais."
 
         is_nil(socket.assigns[:my_team]) ->
-          "You don't have an active subscription."
+          "Você não tem uma assinatura ativa."
 
         true ->
           nil
@@ -72,8 +72,8 @@ defmodule PlausibleWeb.Live.SiteTransferSettings do
       <.flash_messages flash={@flash} />
 
       <.tile docs="transfer-ownership">
-        <:title>Transfer site</:title>
-        <:subtitle>Move this site to another team or Plausible account.</:subtitle>
+        <:title>Transferir site</:title>
+        <:subtitle>Mova este site para outra equipe ou conta Plausible.</:subtitle>
 
         <.form
           :let={f}
@@ -83,7 +83,7 @@ defmodule PlausibleWeb.Live.SiteTransferSettings do
           phx-submit="save"
         >
           <fieldset class="max-w-lg flex flex-col gap-y-4">
-            <.label>Destination</.label>
+            <.label>Destino</.label>
 
             <div class="flex flex-col">
               <div class={not @show_teams? && "opacity-40 cursor-not-allowed"}>
@@ -94,7 +94,7 @@ defmodule PlausibleWeb.Live.SiteTransferSettings do
                   value={:team}
                   checked={f[:destination].value == :team and @show_teams?}
                   disabled={not @show_teams?}
-                  label="Team"
+                  label="Equipe"
                 />
               </div>
               <div
@@ -102,13 +102,13 @@ defmodule PlausibleWeb.Live.SiteTransferSettings do
                 class="ml-7 mt-1 flex flex-col gap-y-2"
               >
                 <p class="text-sm text-gray-500 dark:text-gray-400 text-pretty">
-                  The site will immediately move to the selected team. Billing does not transfer.
+                  O site será movido imediatamente para a equipe selecionada. A cobrança não é transferida.
                 </p>
                 <.input
                   type="select"
                   field={f[:team_identifier]}
                   options={@team_options}
-                  prompt="Select a team"
+                  prompt="Selecione uma equipe"
                   mt?={false}
                 />
               </div>
@@ -116,7 +116,7 @@ defmodule PlausibleWeb.Live.SiteTransferSettings do
                 :if={not @show_teams?}
                 class="ml-7 mt-1 text-sm text-gray-500/60 dark:text-gray-400/60 text-pretty"
               >
-                You aren't a member of any other teams or you lack privileges for transfer.
+                Você não é membro de nenhuma outra equipe ou não tem privilégios para transferência.
               </p>
             </div>
 
@@ -127,19 +127,19 @@ defmodule PlausibleWeb.Live.SiteTransferSettings do
                 name={f[:destination].name}
                 value={:account}
                 checked={f[:destination].value == :account}
-                label="Another Plausible account"
+                label="Outra conta Plausible"
               />
               <div
                 :if={f[:destination].value == :account}
                 class="ml-7 mt-1 flex flex-col gap-y-2"
               >
                 <p class="text-sm text-gray-500 dark:text-gray-400 text-pretty">
-                  The recipient will receive an email and have 48 hours to accept the transfer. You'll keep Guest Editor access by default.
+                  O destinatário receberá um e-mail e terá 48 horas para aceitar a transferência. Você manterá o acesso como Editor Convidado por padrão.
                 </p>
                 <.input
                   type="email"
                   field={f[:email]}
-                  label="Email address"
+                  label="Endereço de e-mail"
                   placeholder="example@email.com"
                   mt?={false}
                 />
@@ -179,7 +179,7 @@ defmodule PlausibleWeb.Live.SiteTransferSettings do
           <.button
             type="submit"
             theme="danger"
-            phx-disable-with="Transferring..."
+            phx-disable-with="Transferindo..."
           >
             {submit_label(f[:destination].value)}
           </.button>
@@ -288,28 +288,28 @@ defmodule PlausibleWeb.Live.SiteTransferSettings do
     assign(socket, form: to_form(changeset, as: :form))
   end
 
-  defp submit_label(:team), do: "Move site"
-  defp submit_label(:my_team), do: "Move site"
-  defp submit_label(_), do: "Send transfer request"
+  defp submit_label(:team), do: "Mover site"
+  defp submit_label(:my_team), do: "Mover site"
+  defp submit_label(_), do: "Enviar solicitação de transferência"
 
   defp change_team_error_message(:no_plan, false = _my_team?) do
-    "This team doesn't have a subscription. Please start a subscription for the team first and then try moving the site again."
+    "Esta equipe não tem uma assinatura. Por favor, inicie uma assinatura para a equipe primeiro e tente mover o site novamente."
   end
 
   defp change_team_error_message(:no_plan, true = _my_team?) do
-    "You don't have a subscription. Please start a subscription first and then try moving the site again."
+    "Você não tem uma assinatura. Por favor, inicie uma assinatura primeiro e tente mover o site novamente."
   end
 
   defp change_team_error_message({:over_plan_limits, _}, false = _my_team?) do
-    "This site's usage exceeds the destination team's subscription limits. Upgrade the team's subscription to continue."
+    "O uso deste site excede os limites da assinatura da equipe de destino. Faça upgrade da assinatura da equipe para continuar."
   end
 
   defp change_team_error_message({:over_plan_limits, _}, true = _my_team?) do
-    "This site's usage exceeds your subscription limits. Upgrade your subscription to continue."
+    "O uso deste site excede os limites da sua assinatura. Faça upgrade da sua assinatura para continuar."
   end
 
   defp change_team_error_message(_, false = _my_team?) do
-    "Sorry, this team cannot be used."
+    "Desculpe, esta equipe não pode ser usada."
   end
 
   defp change_team_error_message(_, true = _my_team?) do

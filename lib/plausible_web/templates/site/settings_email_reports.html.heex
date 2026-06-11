@@ -6,10 +6,10 @@
       enable_route: :enable_weekly_report,
       remove_route: :remove_weekly_report_recipient,
       add_route: :add_weekly_report_recipient,
-      heading: "Weekly email reports",
-      subtitle: "Send weekly analytics reports to as many addresses as you wish.",
-      toggle: "Send a weekly email report every Monday",
-      add_label: "Add weekly report recipient"
+      heading: "Relatórios semanais por e-mail",
+      subtitle: "Envie relatórios analíticos semanais para quantos endereços quiser.",
+      toggle: "Enviar um relatório semanal por e-mail toda segunda-feira",
+      add_label: "Adicionar destinatário do relatório semanal"
     },
     monthly: %{
       report: @monthly_report,
@@ -17,10 +17,10 @@
       enable_route: :enable_monthly_report,
       remove_route: :remove_monthly_report_recipient,
       add_route: :add_monthly_report_recipient,
-      heading: "Monthly email reports",
-      subtitle: "Send monthly analytics reports to as many addresses as you wish.",
-      toggle: "Send a monthly email report on 1st of the month",
-      add_label: "Add monthly report recipient"
+      heading: "Relatórios mensais por e-mail",
+      subtitle: "Envie relatórios analíticos mensais para quantos endereços quiser.",
+      toggle: "Enviar um relatório mensal por e-mail no dia 1º do mês",
+      add_label: "Adicionar destinatário do relatório mensal"
     }
   ] %>
 
@@ -51,9 +51,9 @@
       <.table :if={Enum.count(meta.report.recipients) > 0} rows={meta.report.recipients}>
         <:thead>
           <.th>
-            Recipients
+            Destinatários
           </.th>
-          <.th invisible>Actions</.th>
+          <.th invisible>Ações</.th>
         </:thead>
 
         <:tbody :let={recipient}>
@@ -93,11 +93,11 @@
             field={f[:recipient]}
             type="email"
             required
-            placeholder="e.g. joe@example.com"
+            placeholder="ex: joao@exemplo.com"
             mt?={false}
           />
           <.button type="submit" mt?={false}>
-            Add recipient
+            Adicionar destinatário
           </.button>
         </div>
       </.form>
@@ -107,18 +107,18 @@
   <% change_notifications = [
     spike: %{
       notification: @spike_notification,
-      heading: "Traffic spike notifications",
-      subtitle: "Get notified when your site has unusually high number of current visitors.",
-      threshold_text: "Current visitors threshold",
-      toggle: "Send notifications of traffic spikes"
+      heading: "Notificações de pico de tráfego",
+      subtitle: "Seja notificado quando seu site tiver um número incomumente alto de visitantes simultâneos.",
+      threshold_text: "Limite de visitantes simultâneos",
+      toggle: "Enviar notificações de picos de tráfego"
     },
     drop: %{
       notification: @drop_notification,
-      heading: "Traffic drop notifications",
+      heading: "Notificações de queda de tráfego",
       subtitle:
-        "Get notified when your site has unusually low number of visitors within 12 hours.",
-      threshold_text: "12 hours visitor threshold",
-      toggle: "Send notifications of traffic drops"
+        "Seja notificado quando seu site tiver um número incomumente baixo de visitantes em 12 horas.",
+      threshold_text: "Limite de visitantes em 12 horas",
+      toggle: "Enviar notificações de quedas de tráfego"
     }
   ] %>
 
@@ -159,7 +159,7 @@
           label={meta.threshold_text}
         />
         <.button type="submit" mt?={false}>
-          Save threshold
+          Salvar limite
         </.button>
       </div>
     </.form>
@@ -168,9 +168,9 @@
       <.table rows={meta.notification.recipients}>
         <:thead>
           <.th>
-            Recipients
+            Destinatários
           </.th>
-          <.th invisible>Actions</.th>
+          <.th invisible>Ações</.th>
         </:thead>
 
         <:tbody :let={recipient}>
@@ -218,12 +218,12 @@
           <PlausibleWeb.Live.Components.Form.input
             field={f[:recipient]}
             type="email"
-            placeholder="e.g. joe@example.com"
+            placeholder="ex: joao@exemplo.com"
             mt?={false}
             required
           />
           <.button type="submit" mt?={false}>
-            Add recipient
+            Adicionar destinatário
           </.button>
         </div>
       </.form>

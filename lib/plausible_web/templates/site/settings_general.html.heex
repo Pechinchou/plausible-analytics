@@ -1,39 +1,39 @@
 <.settings_tiles>
   <.tile :if={Plausible.Sites.regular?(@site)} docs="change-domain-name">
     <:title>
-      Site domain
+      Domínio do site
     </:title>
     <:subtitle>
-      Moving your site to a different domain? We got you!
+      Movendo seu site para outro domínio? Podemos ajudar!
     </:subtitle>
-    <.input name="domain" label="Domain" value={@site.domain} disabled width="w-1/2" mt?={false} />
+    <.input name="domain" label="Domínio" value={@site.domain} disabled width="w-1/2" mt?={false} />
 
     <.button_link href={Routes.site_path(@conn, :change_domain, @site.domain)}>
-      Change domain
+      Alterar domínio
     </.button_link>
   </.tile>
 
   <.tile docs="general">
-    <:title>Site timezone</:title>
-    <:subtitle>Update your reporting timezone.</:subtitle>
+    <:title>Fuso horário do site</:title>
+    <:subtitle>Atualize o fuso horário dos seus relatórios.</:subtitle>
     <.form :let={f} for={@changeset} action={"/#{URI.encode_www_form(@site.domain)}/settings"}>
       <.input
         field={f[:timezone]}
-        label="Reporting timezone"
+        label="Fuso horário dos relatórios"
         type="select"
         options={Plausible.Timezones.options()}
         width="w-1/2"
         mt?={false}
       />
       <.button type="submit">
-        Save timezone
+        Salvar fuso horário
       </.button>
     </.form>
   </.tile>
   <.tile :if={Plausible.Sites.regular?(@site)} docs="plausible-script">
-    <:title>Site installation</:title>
+    <:title>Instalação do site</:title>
     <:subtitle>
-      Control what data is collected and verify your installation.
+      Controle quais dados são coletados e verifique sua instalação.
     </:subtitle>
     <.button_link
       href={
@@ -41,7 +41,7 @@
       }
       mt?={false}
     >
-      Review installation
+      Revisar instalação
     </.button_link>
   </.tile>
 </.settings_tiles>

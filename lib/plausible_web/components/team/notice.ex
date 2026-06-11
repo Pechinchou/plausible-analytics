@@ -12,15 +12,15 @@ defmodule PlausibleWeb.Team.Notice do
     ~H"""
     <aside class="mt-4 mb-4">
       <.notice
-        title="A Better Way of Inviting People to Your Team"
+        title="Uma Forma Melhor de Convidar Pessoas para Sua Equipe"
         class="shadow-md dark:shadow-none mt-4"
       >
         <p>
-          You can also create a team and assign different roles to team members, such as admin,
-          editor, viewer or billing. Team members will gain access to all your sites. <.styled_link href={
+          Você também pode criar uma equipe e atribuir diferentes funções aos membros, como admin,
+          editor, visualizador ou financeiro. Os membros da equipe terão acesso a todos os seus sites. <.styled_link href={
             Routes.team_setup_path(PlausibleWeb.Endpoint, :setup)
           }>
-            Create your team here
+            Crie sua equipe aqui
           </.styled_link>.
         </p>
       </.notice>
@@ -32,13 +32,13 @@ defmodule PlausibleWeb.Team.Notice do
     ~H"""
     <aside class="mt-4 mb-4">
       <.notice
-        title="A Better Way of Inviting People to a Team"
+        title="Uma Forma Melhor de Convidar Pessoas para uma Equipe"
         class="shadow-md dark:shadow-none mt-4"
       >
         <p>
-          It is also possible to create a team and assign different roles to team members, such as
-          admin, editor, viewer or billing. Team members can gain access to all the sites. Please
-          contact the site owner to create your team.
+          Também é possível criar uma equipe e atribuir diferentes funções aos membros, como
+          admin, editor, visualizador ou financeiro. Os membros da equipe podem ter acesso a todos os sites. Por favor,
+          entre em contato com o proprietário do site para criar sua equipe.
         </p>
       </.notice>
     </aside>
@@ -50,9 +50,9 @@ defmodule PlausibleWeb.Team.Notice do
     <aside class="mt-4 mb-4">
       <.notice theme={:gray} class="mt-4">
         <p>
-          Team members automatically have access to this site.
+          Os membros da equipe têm acesso automático a este site.
           <.styled_link href={Routes.settings_path(PlausibleWeb.Endpoint, :team_general)}>
-            View team members
+            Ver membros da equipe
           </.styled_link>
         </p>
       </.notice>
@@ -74,7 +74,7 @@ defmodule PlausibleWeb.Team.Notice do
             <.envelope_icon class="size-4 text-green-600 dark:text-green-400" />
           </div>
         </:icon>
-        {i.inviter.name} has invited you to join the "{i.team.name}" as {i.role}.
+        {i.inviter.name} convidou você para entrar em "{i.team.name}" como {i.role}.
         <:actions>
           <.button_link
             method="post"
@@ -85,7 +85,7 @@ defmodule PlausibleWeb.Team.Notice do
             class="order-2 md:order-1"
             mt?={false}
           >
-            Reject
+            Recusar
           </.button_link>
           <.button_link
             method="post"
@@ -95,7 +95,7 @@ defmodule PlausibleWeb.Team.Notice do
             class="order-1 md:order-2"
             mt?={false}
           >
-            Accept
+            Aceitar
           </.button_link>
         </:actions>
       </.notice>
@@ -148,15 +148,15 @@ defmodule PlausibleWeb.Team.Notice do
         </div>
       </:icon>
       <p :if={@can_accept?}>
-        On acceptance, you'll be responsible for billing and this site will join "{Teams.name(
+        Ao aceitar, você será responsável pela cobrança e este site entrará em "{Teams.name(
           @current_team
         )}"
       </p>
       <p :if={@invitation.ownership_check == {:error, :no_plan}} class="text-sm font-medium">
-        You don't have an active subscription. Upgrade to accept ownership and take over billing.
+        Você não tem uma assinatura ativa. Faça upgrade para aceitar a propriedade e assumir a cobrança.
       </p>
       <p :if={@exceeded_limits} class="mt-1 text-sm font-medium">
-        This exceeds your current {@exceeded_limits} limits. Upgrade to accept ownership.
+        Isso excede seus limites atuais de {@exceeded_limits}. Faça upgrade para aceitar a propriedade.
       </p>
       <:actions>
         <.button_link
@@ -210,7 +210,7 @@ defmodule PlausibleWeb.Team.Notice do
               id={"ownership-accept-item-upgrade-#{@invitation.transfer_id}"}
               href={Routes.billing_path(PlausibleWeb.Endpoint, :choose_plan)}
             >
-              Upgrade to accept
+              Fazer upgrade para aceitar
             </PrimaDropdown.dropdown_item>
             <PrimaDropdown.dropdown_item
               as={fn a -> link(Map.put(a, :method, "post")) end}
@@ -224,7 +224,7 @@ defmodule PlausibleWeb.Team.Notice do
                 )
               }
             >
-              Accept without members
+              Aceitar sem membros
             </PrimaDropdown.dropdown_item>
           </PrimaDropdown.dropdown_menu>
         </PrimaDropdown.dropdown>
@@ -257,8 +257,8 @@ defmodule PlausibleWeb.Team.Notice do
             <.envelope_icon class="size-4 text-green-600 dark:text-green-400" />
           </div>
         </:icon>
-        {i.team_invitation.inviter.name} has invited you to join the {i.site.domain} analytics
-        dashboard as a {i.role}.
+        {i.team_invitation.inviter.name} convidou você para acessar o painel de analytics de {i.site.domain}
+        como {i.role}.
         <:actions>
           <.button_link
             method="post"
@@ -268,7 +268,7 @@ defmodule PlausibleWeb.Team.Notice do
             class="order-2 md:order-1"
             mt?={false}
           >
-            Reject
+            Recusar
           </.button_link>
           <.button_link
             method="post"
@@ -278,7 +278,7 @@ defmodule PlausibleWeb.Team.Notice do
             class="order-1 md:order-2"
             mt?={false}
           >
-            Accept
+            Aceitar
           </.button_link>
         </:actions>
       </.notice>

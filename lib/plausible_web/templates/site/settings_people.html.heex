@@ -12,15 +12,15 @@
     current_team={@site_team}
     conn={@conn}
   >
-    <:title>People</:title>
-    <:subtitle>Invite your friends or coworkers</:subtitle>
+    <:title>Pessoas</:title>
+    <:subtitle>Convide seus amigos ou colegas de trabalho</:subtitle>
 
     <.filter_bar :if={@site_role in [:owner, :admin]} filtering_enabled?={false}>
       <.button_link
         mt?={false}
         href={Routes.membership_path(@conn, :invite_member_form, @site.domain)}
       >
-        Invite new guest
+        Convidar novo visitante
       </.button_link>
     </.filter_bar>
 
@@ -59,9 +59,9 @@
                 <:menu class="max-w-60">
                   <%= if membership.role == :owner do %>
                     <.dropdown_item disabled={true}>
-                      <div>Owner</div>
+                      <div>Proprietário</div>
                       <div class="text-gray-500 dark:text-gray-400 text-xs/5">
-                        Site owner cannot be assigned to any other role
+                        O proprietário do site não pode receber outra função
                       </div>
                     </.dropdown_item>
                   <% else %>
@@ -78,9 +78,9 @@
                       method="put"
                       disabled={@site_role not in [:owner, :admin] or membership.role == "editor"}
                     >
-                      <div>Guest editor</div>
+                      <div>Editor convidado</div>
                       <div class="text-gray-500 dark:text-gray-400 text-xs/5">
-                        View stats and edit site settings
+                        Visualiza estatísticas e edita configurações do site
                       </div>
                     </.dropdown_item>
                     <.dropdown_item
@@ -96,9 +96,9 @@
                       method="put"
                       disabled={@site_role not in [:owner, :admin] or membership.role == "viewer"}
                     >
-                      <div>Guest viewer</div>
+                      <div>Visualizador convidado</div>
                       <div class="text-gray-500 dark:text-gray-400 text-xs/5">
-                        View stats only
+                        Apenas visualiza estatísticas
                       </div>
                     </.dropdown_item>
                     <.dropdown_divider />
@@ -115,7 +115,7 @@
                       method="delete"
                       disabled={@site_role not in [:owner, :admin]}
                     >
-                      Remove member
+                      Remover membro
                     </.dropdown_item>
                   <% end %>
                 </:menu>
@@ -128,17 +128,17 @@
   </.tile>
 
   <.tile :if={Enum.count(@invitations) > 0}>
-    <:title>Pending invitations</:title>
-    <:subtitle>Waiting for new members to accept their invitations.</:subtitle>
+    <:title>Convites pendentes</:title>
+    <:subtitle>Aguardando novos membros aceitarem seus convites.</:subtitle>
 
     <.table
       rows={@invitations}
       row_attrs={fn invitation -> %{id: "invitation-#{invitation.invitation_id}"} end}
     >
       <:thead>
-        <.th>Email</.th>
-        <.th hide_on_mobile>Role</.th>
-        <.th invisible>Actions</.th>
+        <.th>E-mail</.th>
+        <.th hide_on_mobile>Função</.th>
+        <.th invisible>Ações</.th>
       </:thead>
       <:tbody :let={invitation}>
         <.td>{invitation.email}</.td>

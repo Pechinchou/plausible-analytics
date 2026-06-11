@@ -52,11 +52,11 @@ defmodule PlausibleWeb.Live.ImportsExportsSettings do
     import_warning =
       cond do
         import_in_progress? ->
-          "No new imports can be started until the import in progress is completed or cancelled."
+          "Nenhuma nova importação pode ser iniciada até que a importação em andamento seja concluída ou cancelada."
 
         at_maximum? ->
-          "Maximum of #{assigns.max_imports} imports is reached. " <>
-            "Delete or cancel an existing import to start a new one."
+          "O máximo de #{assigns.max_imports} importações foi atingido. " <>
+            "Exclua ou cancele uma importação existente para iniciar uma nova."
 
         true ->
           nil
@@ -76,18 +76,18 @@ defmodule PlausibleWeb.Live.ImportsExportsSettings do
 
     <.tile docs="google-analytics-import">
       <:title>
-        Import data
+        Importar dados
       </:title>
       <:subtitle :if={not Enum.empty?(@site_imports)}>
-        Import data from external sources. Up to {Plausible.Imported.max_complete_imports()} imports are allowed at a time.
+        Importe dados de fontes externas. Até {Plausible.Imported.max_complete_imports()} importações são permitidas por vez.
       </:subtitle>
       <%= if Enum.empty?(@site_imports) do %>
         <div class="flex flex-col items-center justify-center pt-5 pb-6 max-w-md mx-auto">
           <h3 class="text-center text-base font-medium text-gray-900 dark:text-gray-100 leading-7">
-            Import your first data
+            Importe seus primeiros dados
           </h3>
           <p class="text-center text-sm mt-1 text-gray-500 dark:text-gray-400 leading-5 text-pretty">
-            Import data from external sources. Up to {Plausible.Imported.max_complete_imports()} imports are allowed at a time.
+            Importe dados de fontes externas. Até {Plausible.Imported.max_complete_imports()} importações são permitidas por vez.
           </p>
           <div class="flex gap-x-4 mt-4">
             <.button_link
@@ -108,7 +108,7 @@ defmodule PlausibleWeb.Live.ImportsExportsSettings do
               href={"/#{URI.encode_www_form(@site.domain)}/settings/import"}
               mt?={false}
             >
-              Import from CSV
+              Importar do CSV
             </.button_link>
           </div>
         </div>
@@ -139,12 +139,12 @@ defmodule PlausibleWeb.Live.ImportsExportsSettings do
         <div class="mt-6">
           <.table rows={@site_imports}>
             <:thead>
-              <.th>Import</.th>
-              <.th hide_on_mobile>Date Range</.th>
+              <.th>Importação</.th>
+              <.th hide_on_mobile>Período</.th>
               <.th hide_on_mobile>
                 <div class="text-right">Pageviews</div>
               </.th>
-              <.th invisible>Actions</.th>
+              <.th invisible>Ações</.th>
             </:thead>
 
             <:tbody :let={entry}>
@@ -194,7 +194,7 @@ defmodule PlausibleWeb.Live.ImportsExportsSettings do
                 <.delete_button
                   href={"/#{URI.encode_www_form(@site.domain)}/settings/forget-import/#{entry.site_import.id}"}
                   method="delete"
-                  data-confirm="Are you sure you want to delete this import?"
+                  data-confirm="Tem certeza que deseja excluir esta importação?"
                 />
               </.td>
             </:tbody>

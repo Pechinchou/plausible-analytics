@@ -1,10 +1,10 @@
 <.settings_tiles>
   <.tile docs="visibility">
     <:title>
-      Public dashboard
+      Painel público
     </:title>
     <:subtitle>
-      Share your stats publicly or keep them private.
+      Compartilhe suas estatísticas publicamente ou mantenha-as privadas.
     </:subtitle>
 
     <.form
@@ -17,7 +17,7 @@
       for={nil}
     >
       <.toggle_submit set_to={@site.public}>
-        Make stats publicly available on
+        Tornar estatísticas disponíveis publicamente em
         <.unstyled_link
           class="text-indigo-500"
           href={Routes.stats_path(@conn, :stats, @site.domain, [])}
@@ -43,16 +43,16 @@
     conn={@conn}
   >
     <:title>
-      Embed dashboard
+      Incorporar painel
     </:title>
     <:subtitle>
-      You can use shared links to embed your stats in any other webpage using an <code>iframe</code>. Copy & paste a shared link into the form below to generate the embed code.
+      Você pode usar links compartilhados para incorporar suas estatísticas em qualquer página usando um <code>iframe</code>. Cole um link compartilhado no formulário abaixo para gerar o código de incorporação.
     </:subtitle>
 
     <.input
       name="embed-link"
       id="embed-link"
-      label="Enter shared link (only public shared links without password can be embedded)"
+      label="Insira o link compartilhado (apenas links públicos sem senha podem ser incorporados)"
       value=""
       width="w-1/2"
       mt?={false}
@@ -62,7 +62,7 @@
       type="select"
       name="theme"
       id="theme"
-      label="Select theme"
+      label="Selecionar tema"
       options={["Light", "Dark", "System"]}
       value="Light"
       width="w-1/2"
@@ -71,18 +71,18 @@
     <.input
       name="background"
       id="background"
-      label="Custom background color (optional). Try using `transparent` background to blend the dashboard with your site."
+      label="Cor de fundo personalizada (opcional). Tente usar o fundo `transparent` para combinar o painel com seu site."
       value=""
-      placeholder="e.g. #F9FAFB"
+      placeholder="ex: #F9FAFB"
       width="w-1/2"
     />
 
     <.input name="base-url" type="hidden" id="base-url" value={plausible_url()} />
     <.button id="generate-embed" mt?={false}>
-      Generate embed code
+      Gerar código de incorporação
     </.button>
 
-    <.label for="embed-code" class="mt-4">Embed code</.label>
+    <.label for="embed-code" class="mt-4">Código de incorporação</.label>
 
     <div class="relative mt-1">
       <textarea

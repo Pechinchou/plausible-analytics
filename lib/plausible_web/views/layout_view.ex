@@ -57,41 +57,41 @@ defmodule PlausibleWeb.LayoutView do
     regular_site? = Plausible.Sites.regular?(conn.assigns.site)
 
     [
-      %{key: "General", value: "general", icon: :rocket_launch},
+      %{key: "Geral", value: "general", icon: :rocket_launch},
       if regular_site? do
-        %{key: "People", value: "people", icon: :users}
+        %{key: "Pessoas", value: "people", icon: :users}
       end,
       if regular_site? do
-        %{key: "Visibility", value: "visibility", icon: :eye}
+        %{key: "Visibilidade", value: "visibility", icon: :eye}
       end,
-      %{key: "Goals", value: "goals", icon: :check_circle},
+      %{key: "Metas", value: "goals", icon: :check_circle},
       on_ee do
         if regular_site? do
-          %{key: "Funnels", value: "funnels", icon: :funnel}
+          %{key: "Funis", value: "funnels", icon: :funnel}
         end
       end,
-      %{key: "Custom properties", value: "properties", icon: :tag},
+      %{key: "Propriedades personalizadas", value: "properties", icon: :tag},
       if regular_site? do
-        %{key: "Integrations", value: "integrations", icon: :puzzle_piece}
+        %{key: "Integrações", value: "integrations", icon: :puzzle_piece}
       end,
       if regular_site? do
-        %{key: "Imports & exports", value: "imports-exports", icon: :arrow_down_tray}
+        %{key: "Importações e exportações", value: "imports-exports", icon: :arrow_down_tray}
       end,
       if regular_site? do
         %{
-          key: "Shields",
+          key: "Escudos",
           icon: :shield_exclamation,
           value: [
-            %{key: "IP addresses", value: "shields/ip_addresses"},
-            %{key: "Countries", value: "shields/countries"},
-            %{key: "Pages", value: "shields/pages"},
+            %{key: "Endereços IP", value: "shields/ip_addresses"},
+            %{key: "Países", value: "shields/countries"},
+            %{key: "Páginas", value: "shields/pages"},
             %{key: "Hostnames", value: "shields/hostnames"}
           ]
         }
       end,
-      %{key: "Email reports", value: "email-reports", icon: :envelope},
+      %{key: "Relatórios por e-mail", value: "email-reports", icon: :envelope},
       if regular_site? and conn.assigns[:site_role] in [:owner, :admin] do
-        %{key: "Danger zone", value: "danger-zone", icon: :exclamation_triangle}
+        %{key: "Zona de perigo", value: "danger-zone", icon: :exclamation_triangle}
       end
     ]
     |> Enum.reject(&is_nil/1)

@@ -72,16 +72,16 @@ defmodule PlausibleWeb.Live.GoalSettings do
         current_user={@current_user}
       >
         <:title>
-          Goals
+          Metas
         </:title>
         <:subtitle :if={Enum.count(@all_goals) > 0}>
           <p>
-            Define actions that you want your users to take, like visiting a certain page, submitting a form, etc.
+            Defina ações que você quer que seus usuários realizem, como visitar uma página, enviar um formulário, etc.
           </p>
           <p :if={ee?() and Plausible.Sites.regular?(@site)} data-test-id="setup-funnels-cta">
-            You can also
+            Você também pode
             <.styled_link href={Routes.site_path(@socket, :settings_funnels, @domain)}>
-              compose goals into funnels.
+              combinar metas em funis.
             </.styled_link>
           </p>
         </:subtitle>
@@ -172,7 +172,7 @@ defmodule PlausibleWeb.Live.GoalSettings do
 
         socket =
           socket
-          |> put_live_flash(:success, "Goal deleted successfully")
+          |> put_live_flash(:success, "Meta excluída com sucesso")
           |> assign(
             all_goals: Enum.reject(socket.assigns.all_goals, &(&1.id == goal_id)),
             event_name_options: event_name_options,
@@ -200,7 +200,7 @@ defmodule PlausibleWeb.Live.GoalSettings do
         form_goal: nil,
         goal_type: nil
       )
-      |> put_live_flash(:success, "Goal saved successfully")
+      |> put_live_flash(:success, "Meta salva com sucesso")
 
     {:noreply, socket}
   end
@@ -221,7 +221,7 @@ defmodule PlausibleWeb.Live.GoalSettings do
         event_name_options: [],
         displayed_goals: added_goals ++ socket.assigns.all_goals
       )
-      |> put_live_flash(:success, "All goals added successfully")
+      |> put_live_flash(:success, "Todas as metas foram adicionadas com sucesso")
 
     {:noreply, socket}
   end
