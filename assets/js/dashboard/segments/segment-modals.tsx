@@ -484,12 +484,12 @@ export const SegmentModal = ({ id }: { id: SavedSegment['id'] }) => {
       <div className="flex flex-col gap-y-6 dark:text-gray-100">
         <div className="text-sm flex flex-col gap-y-0.5">
           <h2 className="font-semibold break-all">
-            <Placeholder placeholder="Segment name">
+            <Placeholder placeholder="Nome do segmento">
               {data?.name ?? false}
             </Placeholder>
           </h2>
           <div className="text-gray-500 dark:text-gray-400">
-            <Placeholder placeholder="Segment type">
+            <Placeholder placeholder="Tipo de segmento">
               {data?.segment_data ? SEGMENT_TYPE_LABELS[data.type] : false}
             </Placeholder>
             {!!data?.segment_data && (

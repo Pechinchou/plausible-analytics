@@ -11,8 +11,8 @@ export type OrderBy = Order[]
 
 export const getSortDirectionLabel = (sortDirection: SortDirection): string =>
   ({
-    asc: 'Sorted in ascending order',
-    desc: 'Sorted in descending order'
+    asc: 'Ordenado em ordem crescente',
+    desc: 'Ordenado em ordem decrescente'
   })[sortDirection]
 
 export function useOrderBy({
@@ -59,13 +59,13 @@ export function cycleSortDirection(
   if (currentSortDirection === 'desc') {
     return {
       direction: 'asc',
-      hint: 'Press to sort column in ascending order'
+      hint: 'Pressione para ordenar coluna em ordem crescente'
     }
   }
 
   return {
     direction: 'desc',
-    hint: 'Press to sort column in descending order'
+    hint: 'Pressione para ordenar coluna em ordem decrescente'
   }
 }
 

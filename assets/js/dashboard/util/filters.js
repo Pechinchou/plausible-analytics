@@ -151,9 +151,9 @@ export function formatFilterGroup(filterGroup) {
   if (filterGroup === 'utm') {
     return 'UTM tags'
   } else if (filterGroup === 'location') {
-    return 'Location'
+    return 'Localização'
   } else if (filterGroup === 'props') {
-    return 'Property'
+    return 'Propriedade'
   } else {
     return formattedFilters[filterGroup]
   }

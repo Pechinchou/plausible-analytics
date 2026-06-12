@@ -317,7 +317,7 @@ function VisitorsWithPercentageCell({
           value={visitorsValue}
           comparison={visitorsComparison}
           metric={'visitors'}
-          metricLabel="Visitors"
+          metricLabel="Visitantes"
           dateRangeLabel={dateRangeLabel}
           comparisonDateRangeLabel={comparisonDateRangeLabel}
         />
