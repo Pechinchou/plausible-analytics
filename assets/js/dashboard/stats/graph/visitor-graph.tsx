@@ -111,7 +111,7 @@ export default function VisitorGraph({
     !showFullLoader
 
   return (
-    <div className="col-span-full relative w-full bg-white rounded-md shadow-sm dark:bg-gray-900 max-xs:hidden">
+    <div className="col-span-full relative w-full bg-white rounded-md shadow-sm dark:bg-gray-900">
       <>
         <div
           id="top-stats-container"
@@ -134,7 +134,7 @@ export default function VisitorGraph({
             ></div>
           )}
         </div>
-        <div className="relative flex flex-col pl-3 pr-4">
+        <div className="relative flex flex-col pl-3 pr-4 max-xs:hidden">
           <MainGraphContainer ref={mainGraphContainer}>
             {!!mainGraphApiState.data && !!width && (
               <>
