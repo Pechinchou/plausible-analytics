@@ -100,7 +100,10 @@ export function track(eventName, options) {
   if (COMPILE_PLAUSIBLE_LEGACY_VARIANT && options && options.meta) {
     payload.m = JSON.stringify(options.meta)
   }
-  if (options && options.props) {
+  if (isPageview) {
+    var titleProps = { title: document.title || '' }
+    payload.p = Object.assign({}, titleProps, options && options.props)
+  } else if (options && options.props) {
     payload.p = options.props
   }
   if (options && options.interactive === false) {

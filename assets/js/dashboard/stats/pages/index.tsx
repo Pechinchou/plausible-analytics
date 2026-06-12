@@ -34,49 +34,76 @@ const BAR_COLOR = 'bg-orange-50 group-hover/row:bg-orange-100'
 const MAX_DIMENSION_LENGTH = 70
 
 export default function Pages() {
-  const { dashboardState } = useDashboardStateContext()
-  const site = useSiteContext()
+  return (
+    <>
+      <PageTitlesPanel />
+      <PageURLsPanel />
+    </>
+  )
+}
 
-  const storageKey = `pageTab__${site.domain}`
-  const [tab, setTab] = useState<TabKey>(initTab(storage.getItem(storageKey)))
+function PageTitlesPanel() {
+  const { dashboardState } = useDashboardStateContext()
   const [currentData, setCurrentData] = useState<QueryApiResponse | null>(null)
 
-  const reportKey = getReportKey(tab)
-  const reportConfig = BREAKDOWN_REPORTS[reportKey]
+  const reportConfig = BREAKDOWN_REPORTS[BreakdownReportKey.pageTitles]
+  const metrics = chooseBreakdownMetricsByContext(reportConfig.metricsByContext, {
+    isRealtime: isRealTimeDashboard(dashboardState),
+    isDetailed: false,
+    hasConversionGoalFilter: hasConversionGoalFilter(dashboardState),
+    isRevenueAvailable: false
+  })
 
-  const metrics = chooseBreakdownMetricsByContext(
-    reportConfig.metricsByContext,
-    {
-      isRealtime: isRealTimeDashboard(dashboardState),
-      isDetailed: false,
-      hasConversionGoalFilter: hasConversionGoalFilter(dashboardState),
-      isRevenueAvailable: false
-    }
-  )
+  const moreLinkState = currentData
+    ? currentData.results.length > 0
+      ? MoreLinkState.READY
+      : MoreLinkState.HIDDEN
+    : MoreLinkState.LOADING
 
-  function switchTab(tab: TabKey) {
-    storage.setItem(storageKey, tab)
-    setTab(tab)
-  }
-
-  function moreLinkProps() {
-    return {
-      path: reportConfig.detailsPath,
-      search: (search: string) => search
-    }
-  }
-
-  function renderContent() {
-    return (
+  return (
+    <ReportLayout testId="report-page-titles" className="overflow-x-hidden">
+      <ReportHeader>
+        <div className="flex gap-x-3">
+          <TabWrapper>
+            <TabButton active>{hasConversionGoalFilter(dashboardState) ? 'Páginas de conversão' : 'Páginas em Alta'}</TabButton>
+          </TabWrapper>
+          <ImportedWarningBubble queryApiResponse={currentData} />
+        </div>
+        <MoreLink state={moreLinkState} linkProps={{ path: reportConfig.detailsPath, search: (s: string) => s }} />
+      </ReportHeader>
       <IndexBreakdown
         metrics={metrics}
         dimensions={reportConfig.dimensions}
         dimensionLabel={reportConfig.dimensionLabel}
         alwaysOnFilters={reportConfig.alwaysOnFilters}
-        DimensionElement={PagesDimensionCell}
+        DimensionElement={TitleDimensionCell}
         onDataReady={setCurrentData}
       />
-    )
+    </ReportLayout>
+  )
+}
+
+function PageURLsPanel() {
+  const { dashboardState } = useDashboardStateContext()
+  const site = useSiteContext()
+
+  const storageKey = `pageTab__${site.domain}`
+  const [tab, setTab] = useState<URLTabKey>(initTab(storage.getItem(storageKey)))
+  const [currentData, setCurrentData] = useState<QueryApiResponse | null>(null)
+
+  const reportKey = getReportKey(tab)
+  const reportConfig = BREAKDOWN_REPORTS[reportKey]
+
+  const metrics = chooseBreakdownMetricsByContext(reportConfig.metricsByContext, {
+    isRealtime: isRealTimeDashboard(dashboardState),
+    isDetailed: false,
+    hasConversionGoalFilter: hasConversionGoalFilter(dashboardState),
+    isRevenueAvailable: false
+  })
+
+  function switchTab(tab: URLTabKey) {
+    storage.setItem(storageKey, tab)
+    setTab(tab)
   }
 
   const moreLinkState = currentData
@@ -95,7 +122,7 @@ export default function Pages() {
                 {
                   label: hasConversionGoalFilter(dashboardState)
                     ? 'Páginas de conversão'
-                    : 'Principais páginas',
+                    : 'Páginas em Alta',
                   value: BreakdownReportKey.pages
                 },
                 { label: 'Páginas de entrada', value: BreakdownReportKey.entryPages },
@@ -113,10 +140,32 @@ export default function Pages() {
           </TabWrapper>
           <ImportedWarningBubble queryApiResponse={currentData} />
         </div>
-        <MoreLink state={moreLinkState} linkProps={moreLinkProps()} />
+        <MoreLink state={moreLinkState} linkProps={{ path: reportConfig.detailsPath, search: (s: string) => s }} />
       </ReportHeader>
-      {renderContent()}
+      <IndexBreakdown
+        metrics={metrics}
+        dimensions={reportConfig.dimensions}
+        dimensionLabel={reportConfig.dimensionLabel}
+        alwaysOnFilters={reportConfig.alwaysOnFilters}
+        DimensionElement={PagesDimensionCell}
+        onDataReady={setCurrentData}
+      />
     </ReportLayout>
+  )
+}
+
+function TitleDimensionCell(props: DimensionCellWithBarProps) {
+  const title = props.row.dimensions[0] || '(sem título)'
+  const displayValue = title.length > MAX_DIMENSION_LENGTH
+    ? title.slice(0, MAX_DIMENSION_LENGTH) + '...'
+    : title
+  return (
+    <DimensionCellWithBar
+      getFilterInfo={defaultGetFilterInfo}
+      text={displayValue}
+      barClassName={BAR_COLOR}
+      {...props}
+    />
   )
 }
 
@@ -139,7 +188,7 @@ function PagesDimensionCell(props: DimensionCellWithBarProps) {
   )
 }
 
-const initTab = (storedTab: string): TabKey => {
+const initTab = (storedTab: string): URLTabKey => {
   switch (storedTab) {
     case LegacyTabKey.entryPages:
     case BreakdownReportKey.entryPages:
@@ -153,14 +202,14 @@ const initTab = (storedTab: string): TabKey => {
   }
 }
 
-const getReportKey = (tab: TabKey): ReportKey => tab
+const getReportKey = (tab: URLTabKey): URLReportKey => tab
 
-type TabKey =
+type URLTabKey =
   | BreakdownReportKey.pages
   | BreakdownReportKey.entryPages
   | BreakdownReportKey.exitPages
 
-type ReportKey = TabKey
+type URLReportKey = URLTabKey
 
 enum LegacyTabKey {
   entryPages = 'entry-pages',

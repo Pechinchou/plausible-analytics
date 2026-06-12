@@ -22,8 +22,8 @@ function DashboardStats({
   return (
     <>
       <VisitorGraph updateImportedDataInView={updateImportedDataInView} />
-      <Sources />
       <Pages />
+      <Sources />
       <Locations />
       <Devices />
       <Behaviours importedDataInView={importedDataInView} />

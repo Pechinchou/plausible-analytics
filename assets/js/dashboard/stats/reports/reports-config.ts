@@ -36,6 +36,7 @@ const COMMON_METRICS_BY_CONTEXT: MetricsByContext = {
 }
 
 export enum BreakdownReportKey {
+  'pageTitles' = 'pageTitles',
   'pages' = 'pages',
   'entryPages' = 'entryPages',
   'exitPages' = 'exitPages',
@@ -61,6 +62,22 @@ export const BREAKDOWN_REPORTS: Record<
   BreakdownReportKey,
   BreakdownReportConfig
 > = {
+  [BreakdownReportKey.pageTitles]: {
+    dimensions: ['event:props:title'],
+    metricsByContext: {
+      ...COMMON_METRICS_BY_CONTEXT,
+      defaultDetailedMetrics: [
+        'visitors',
+        'percentage',
+        'pageviews',
+        'bounce_rate',
+        'time_on_page'
+      ]
+    },
+    detailsTitle: 'Títulos das páginas',
+    detailsPath: 'pages',
+    dimensionLabel: 'Título'
+  },
   [BreakdownReportKey.pages]: {
     dimensions: ['event:page'],
     metricsByContext: {
