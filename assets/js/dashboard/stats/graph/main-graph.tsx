@@ -41,6 +41,14 @@ import { Metric, getMetricLabel } from '../metrics'
 
 import { extractIntervalFromDimensions, Interval } from './intervals'
 
+const INTERVAL_LABELS_PT: Record<string, string> = {
+  minute: 'minuto',
+  hour: 'hora',
+  day: 'dia',
+  week: 'semana',
+  month: 'mês'
+}
+
 const height = 368
 const marginTop = 16
 const marginRight = 4
@@ -543,14 +551,14 @@ const MainGraphTooltip = ({
             <hr className="border-gray-600 dark:border-gray-800 my-1" />
             {!persistent && (
               <span className="text-gray-300 dark:text-gray-400 text-xs">
-                {`Click to view ${interval}`}
+                {`Clique para ver ${INTERVAL_LABELS_PT[interval] ?? interval}`}
               </span>
             )}
             {persistent && (
               <button
                 className="button"
                 onClick={onClick}
-              >{`View ${interval}`}</button>
+              >{`Ver ${INTERVAL_LABELS_PT[interval] ?? interval}`}</button>
             )}
           </>
         )}
@@ -653,7 +661,7 @@ const getFullBucketLabel = (
         bucketIndex,
         totalBuckets
       })
-      return isPartial ? `Partial of ${month}` : month
+      return isPartial ? `Parcial de ${month}` : month
     }
     case Interval.week: {
       const date = getBucketLabel(xValue, {
@@ -664,7 +672,7 @@ const getFullBucketLabel = (
         bucketIndex,
         totalBuckets
       })
-      return isPartial ? `Partial week of ${date}` : `Week of ${date}`
+      return isPartial ? `Semana parcial de ${date}` : `Semana de ${date}`
     }
     case Interval.day:
       return formatDay(parsedDate, shouldShowYear)
@@ -681,7 +689,7 @@ const getFullBucketLabel = (
     case Interval.minute: {
       if (isRealtime) {
         const minutesAgo = totalBuckets - bucketIndex
-        return minutesAgo === 1 ? `1 minute ago` : `${minutesAgo} minutes ago`
+        return minutesAgo === 1 ? `1 minuto atrás` : `${minutesAgo} minutos atrás`
       }
       const time = formatTime(parsedDate, {
         use12HourClock: is12HourClock(),

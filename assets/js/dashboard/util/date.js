@@ -1,7 +1,9 @@
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
+import 'dayjs/locale/pt-br'
 
 dayjs.extend(utc)
+dayjs.locale('pt-br')
 
 const browserDateFormat = Intl.DateTimeFormat(navigator.language, {
   hour: 'numeric'
@@ -29,7 +31,7 @@ export function formatMonthYYYY(date) {
 }
 
 export function formatYear(date) {
-  return `Year of ${date.year()}`
+  return `Ano de ${date.year()}`
 }
 
 export function formatYearShort(date) {
