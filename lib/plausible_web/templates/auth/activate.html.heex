@@ -1,30 +1,30 @@
 <PlausibleWeb.Components.FlowProgress.render
   flow={@conn.params["flow"]}
-  current_step="Activate account"
+  current_step="Ativar conta"
 />
 
 <.focus_box>
   <:title>
     <%= if @has_email_code? do %>
       <%= if @has_any_memberships? do %>
-        Verify your email address
+        Verifique seu endereço de e-mail
       <% else %>
-        Activate your account
+        Ative sua conta
       <% end %>
     <% else %>
-      Activate your account
+      Ative sua conta
     <% end %>
   </:title>
 
   <:subtitle :if={@has_email_code?}>
     <p class="break-all">
-      Please enter the 4-digit code we sent to <b>{@conn.assigns[:current_user].email}</b>
+      Insira o código de 4 dígitos que enviamos para <b>{@conn.assigns[:current_user].email}</b>
     </p>
   </:subtitle>
 
   <:subtitle :if={!@has_email_code?}>
     <p class="break-all">
-      A 4-digit activation code will be sent to <b>{@conn.assigns[:current_user].email}</b>
+      Um código de ativação de 4 dígitos será enviado para <b>{@conn.assigns[:current_user].email}</b>
     </p>
   </:subtitle>
 
@@ -42,7 +42,7 @@
         required={true}
       />
       <.button id="submit" type="submit" class="w-full mt-8">
-        Activate
+        Ativar
       </.button>
     </.form>
   </div>
@@ -51,43 +51,43 @@
 
   <div :if={!@has_email_code?}>
     <.button_link method="post" class="w-full" href="/activate/request-code">
-      Request activation code
+      Solicitar código de ativação
     </.button_link>
   </div>
 
   <:footer :if={@has_email_code?}>
-    <b>Didn't receive an email?</b>
+    <b>Não recebeu o e-mail?</b>
 
     <.focus_list>
       <:item>
-        Check your spam folder
+        Verifique sua pasta de spam
       </:item>
       <:item>
         <.styled_link href="/activate/request-code" method="post">
-          Send a new code
+          Enviar um novo código
         </.styled_link>
-        to {@conn.assigns[:current_user].email}
+        para {@conn.assigns[:current_user].email}
       </:item>
       <:item :if={ee?()}>
         <.styled_link href="https://plausible.io/contact" new_tab={true}>
-          Contact us
+          Fale conosco
         </.styled_link>
-        if the problem persists
+        se o problema persistir
       </:item>
       <:item :if={ce?()}>
-        Ask on our
+        Pergunte no nosso
         <.styled_link href="https://github.com/plausible/analytics/discussions" new_tab={true}>
-          community-supported forum
+          fórum com suporte da comunidade
         </.styled_link>
       </:item>
     </.focus_list>
 
-    <b>Entered the wrong email address?</b>
+    <b>Digitou o endereço de e-mail errado?</b>
 
     <.focus_list>
       <:item :if={@has_any_memberships?}>
         <.styled_link method="post" href={Routes.settings_path(@conn, :cancel_update_email)}>
-          Change email back to
+          Voltar para o e-mail
         </.styled_link>
         {@conn.assigns[:current_user].previous_email}
       </:item>
@@ -96,11 +96,11 @@
         <.styled_link
           method="delete"
           href="/me?redirect=/register"
-          data-confim="Deleting your account cannot be reversed. Are you sure?"
+          data-confim="A exclusão da sua conta não pode ser revertida. Tem certeza?"
         >
-          Delete this account
+          Excluir esta conta
         </.styled_link>
-        and start over
+        e começar novamente
       </:item>
     </.focus_list>
   </:footer>

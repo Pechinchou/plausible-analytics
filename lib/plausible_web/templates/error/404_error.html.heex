@@ -1,9 +1,9 @@
 <div class="container flex flex-col items-center text-center mt-24">
   <h1 class="text-5xl font-black dark:text-gray-100">{@status}</h1>
-  <div class="mt-4 text-xl dark:text-gray-100">Oops! There's nothing here</div>
+  <div class="mt-4 text-xl dark:text-gray-100">Ops! Não há nada aqui</div>
 
   <div :if={!@conn.assigns[:current_user]} class="text-xl dark:text-gray-100">
-    Trying to access your dashboard? You may need to log in again to see it
+    Tentando acessar seu painel? Talvez você precise entrar novamente para vê-lo
   </div>
   <div class="mt-4 flex">
     <.button_link
@@ -11,10 +11,10 @@
       href={Routes.auth_path(@conn, :login_form, return_to: url_path(@conn))}
       class="mr-4"
     >
-      Log in
+      Entrar
     </.button_link>
     <.button_link theme="secondary" href={PlausibleWeb.LayoutView.home_dest(@conn)}>
-      Go to homepage
+      Ir para a página inicial
     </.button_link>
   </div>
 </div>

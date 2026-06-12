@@ -1,15 +1,15 @@
 <.focus_box>
-  <:title>Create new API key</:title>
+  <:title>Criar nova chave de API</:title>
 
   <div x-data="{ submitDisabled: false }">
     <.form :let={f} for={@changeset} action={Routes.settings_path(@conn, :api_keys)}>
-      <.input type="text" field={f[:name]} label="Name" placeholder="Development" />
+      <.input type="text" field={f[:name]} label="Nome" placeholder="Desenvolvimento" />
 
       <input :if={ce?()} type="hidden" name={f[:type].name} value={f[:type].value} />
 
       <div :if={ee?()} class="mt-4 flex flex-col gap-y-2">
         <div>
-          <.label>Type</.label>
+          <.label>Tipo</.label>
         </div>
 
         <.input
@@ -20,11 +20,11 @@
           name={f[:type].name}
           value="stats_api"
           checked={f[:type].value == "stats_api"}
-          label="Stats API"
+          label="API de Estatísticas"
         >
           <:help_content>
-            Full access to
-            <.styled_link href="https://plausible.io/docs/stats-api">Stats API</.styled_link>
+            Acesso completo à
+            <.styled_link href="https://plausible.io/docs/stats-api">API de Estatísticas</.styled_link>
           </:help_content>
         </.input>
 
@@ -35,21 +35,21 @@
           name={f[:type].name}
           value="sites_api"
           checked={f[:type].value == "sites_api"}
-          label="Sites API"
+          label="API de Sites"
         >
           <:help_content>
-            Full access to
-            <.styled_link href="https://plausible.io/docs/stats-api">Stats API</.styled_link>
-            and <.styled_link href="https://plausible.io/docs/sites-api">Sites API</.styled_link>
+            Acesso completo à
+            <.styled_link href="https://plausible.io/docs/stats-api">API de Estatísticas</.styled_link>
+            e à <.styled_link href="https://plausible.io/docs/sites-api">API de Sites</.styled_link>
           </:help_content>
         </.input>
 
         <div x-show="submitDisabled" class="flex gap-x-2 text-sm">
           <Heroicons.exclamation_triangle class="mt-1 block w-4 h-4 shrink-0" />
           <div>
-            Your current subscription plan does not include Sites API access.
-            <a href="https://plausible.io/contact" class="underline">Contact us</a>
-            if interested.
+            Seu plano atual não inclui acesso à API de Sites.
+            <a href="https://plausible.io/contact" class="underline">Fale conosco</a>
+            se tiver interesse.
           </div>
         </div>
       </div>
@@ -58,7 +58,7 @@
         <.input_with_clipboard
           id="key-input"
           name="api_key[key]"
-          label="Key"
+          label="Chave"
           value={f[:key].value}
         />
 
@@ -69,11 +69,11 @@
         </.error>
 
         <p class="mt-2 text-gray-500 dark:text-gray-200">
-          Make sure to store the key in a secure place. Once created, we will not be able to show it again.
+          Guarde a chave em um lugar seguro. Após criada, não será possível exibi-la novamente.
         </p>
       </div>
       <.button type="submit" class="w-full" x-bind:disabled="submitDisabled">
-        Create API key
+        Criar chave de API
       </.button>
     </.form>
   </div>

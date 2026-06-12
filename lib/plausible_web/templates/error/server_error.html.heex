@@ -1,6 +1,6 @@
 <div class="w-full max-w-3xl mt-4 mx-auto flex">
   <div class="max-w-lg w-full mx-auto bg-white dark:bg-gray-800 shadow-lg rounded-sm px-8 pt-6 pb-8 mb-4 mt-8">
-    <h2 class="text-xl font-black dark:text-gray-100">Oops, sorry about that...</h2>
+    <h2 class="text-xl font-black dark:text-gray-100">Ops, desculpe pelo inconveniente...</h2>
 
     <div class="rounded-md bg-yellow-50 dark:bg-transparent dark:border border-yellow-200 p-4 mt-4">
       <div class="flex">
@@ -21,18 +21,18 @@
         </div>
         <div class="ml-3">
           <h3 class="text-sm font-medium text-yellow-800 dark:text-yellow-400">
-            There has been a server error.
+            Ocorreu um erro no servidor.
             <%= if ee?() do %>
-              But don't worry, we're on it!
+              Mas não se preocupe, já estamos trabalhando nisso!
             <% end %>
           </h3>
 
           <div class="mt-2 text-sm text-yellow-700 dark:text-yellow-300">
             <p>
               <%= if assigns[:trace_id] && ee?() do %>
-                If you would like to help, tell us what you were trying to do. Our development team will receive your report.
+                Se quiser nos ajudar, conte o que estava tentando fazer. Nossa equipe de desenvolvimento receberá seu relatório.
               <% else %>
-                We have been notified.
+                Já fomos notificados.
               <% end %>
             </p>
           </div>
@@ -51,17 +51,17 @@
           >
             <.input type="hidden" field={f[:trace_id]} value={@trace_id} />
             <PlausibleWeb.Live.Components.Form.label for="user_feedback">
-              What happened?
+              O que aconteceu?
             </PlausibleWeb.Live.Components.Form.label>
             <textarea
               name="user_feedback"
               id="user_feedback"
               rows="5"
               class="block w-full max-w-xl border-gray-300 dark:border-gray-700 resize-none shadow-xs focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md dark:bg-gray-900 dark:text-gray-300"
-              placeholder="I clicked on 'X' and then hit 'Confirm'..."
+              placeholder="Cliquei em 'X' e depois em 'Confirmar'..."
             >
         </textarea>
-            <.button class="w-full" type="submit">Send feedback</.button>
+            <.button class="w-full" type="submit">Enviar feedback</.button>
           </.form>
         </div>
       <% end %>
@@ -69,13 +69,13 @@
       <div class="mb-6 mt-12">
         <div class="flex gap-x-5 text-sm justify-center">
           <.styled_link href="/">
-            Home page
+            Página inicial
           </.styled_link>
           <.styled_link href="https://status.plausible.io">
-            Status page
+            Página de status
           </.styled_link>
           <.styled_link href="https://plausible.io/contact">
-            Contact us
+            Fale conosco
           </.styled_link>
         </div>
       </div>
