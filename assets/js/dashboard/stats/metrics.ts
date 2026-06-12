@@ -36,7 +36,7 @@ export const getMetricLabel = (
     case 'visits':
       return 'Total de visitas'
     case 'pageviews':
-      return 'Total de visualizações'
+      return 'Visualizações'
     case 'views_per_visit':
       return 'Visualizações por visita'
     case 'bounce_rate':

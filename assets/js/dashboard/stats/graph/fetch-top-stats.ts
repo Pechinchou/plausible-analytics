@@ -106,7 +106,7 @@ function getTopStatMetricLabel(
   metricKey: Metric,
   { isRealtime, hasConversionGoalFilter }: api.ExtraContext
 ) {
-  const metricLabelSuffix = isRealtime ? ' (últimos 30 min)' : ''
+  const metricLabelSuffix = isRealtime ? ' (30 min)' : ''
 
   return `${getMetricLabel(metricKey, { hasConversionGoalFilter })}${metricLabelSuffix}`
 }
