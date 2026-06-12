@@ -134,7 +134,7 @@ export default function VisitorGraph({
             ></div>
           )}
         </div>
-        <div className="relative flex flex-col pl-3 pr-4 max-xs:hidden">
+        <div className="relative flex-col pl-3 pr-4 hidden md:flex">
           <MainGraphContainer ref={mainGraphContainer}>
             {!!mainGraphApiState.data && !!width && (
               <>
