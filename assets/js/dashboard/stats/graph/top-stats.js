@@ -123,7 +123,7 @@ export default function TopStats({
     const [statDisplayName, statExtraName] = stat.name.split(/(\(.+\))/g)
 
     const statDisplayNameClass = classNames(
-      'text-xs max-xs:text-sm uppercase whitespace-nowrap flex w-fit',
+      'text-xs uppercase whitespace-nowrap flex w-fit',
       {
         'text-gray-900 dark:text-gray-100 font-bold tracking-[-.01em]':
           isSelected,
@@ -149,7 +149,7 @@ export default function TopStats({
     const isSelected = stat.graphable && stat.metric === selectedMetric
 
     const className = classNames(
-      'lg:flex-1 px-4 max-xs:px-3 w-1/2 max-xs:w-1/3 my-2 max-xs:my-1 lg:w-auto group select-none',
+      'lg:flex-1 px-4 max-xs:px-2 w-1/2 max-xs:w-1/3 my-2 max-xs:my-1 lg:w-auto group select-none',
       {
         'cursor-pointer': stat.graphable,
         'lg:border-l border-gray-200 dark:border-gray-750': index > 0,
@@ -177,7 +177,7 @@ export default function TopStats({
           <div>
             <span className="flex items-baseline whitespace-nowrap">
               <p
-                className="font-semibold text-[1.2rem] max-xs:text-[1.5rem] text-gray-900 dark:text-gray-100"
+                className="font-semibold text-xl text-gray-900 dark:text-gray-100"
                 id={
                   stat.name === 'Visitantes ativos'
                     ? 'current_visitors'
