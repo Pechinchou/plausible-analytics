@@ -16,7 +16,7 @@ export const TabWrapper = ({
 }) => (
   <div
     className={classNames(
-      'flex items-baseline gap-x-3.5 text-xs font-medium text-gray-500 dark:text-gray-400',
+      'flex items-baseline gap-x-3.5 text-sm font-medium text-gray-500 dark:text-gray-400',
       className
     )}
   >
@@ -32,7 +32,7 @@ const TabButtonText = ({
   active: boolean
 }) => (
   <span
-    className={classNames('truncate text-left text-xs uppercase', {
+    className={classNames('truncate text-left text-sm uppercase', {
       'text-gray-500 dark:text-gray-400 group-hover/tab:text-gray-800 dark:group-hover/tab:text-gray-200 font-semibold cursor-pointer':
         !active,
       'text-gray-900 dark:text-gray-100 font-bold tracking-[-.01em]': active

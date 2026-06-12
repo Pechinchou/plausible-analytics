@@ -37,6 +37,8 @@ const COMMON_METRICS_BY_CONTEXT: MetricsByContext = {
 
 export enum BreakdownReportKey {
   'pageTitles' = 'pageTitles',
+  'entryPageTitles' = 'entryPageTitles',
+  'exitPageTitles' = 'exitPageTitles',
   'pages' = 'pages',
   'entryPages' = 'entryPages',
   'exitPages' = 'exitPages',
@@ -77,6 +79,40 @@ export const BREAKDOWN_REPORTS: Record<
     detailsTitle: 'Títulos das páginas',
     detailsPath: 'pages',
     dimensionLabel: 'Título'
+  },
+  [BreakdownReportKey.entryPageTitles]: {
+    dimensions: ['event:props:title'],
+    metricsByContext: {
+      ...COMMON_METRICS_BY_CONTEXT,
+      defaultDetailedMetrics: [
+        'visitors',
+        'percentage',
+        'visits',
+        'bounce_rate',
+        'visit_duration'
+      ]
+    },
+    detailsTitle: 'Títulos das páginas de entrada',
+    detailsPath: 'entry-pages',
+    dimensionLabel: 'Título de entrada',
+    alwaysOnFilters: [['is_not', 'visit:entry_page', ['']]]
+  },
+  [BreakdownReportKey.exitPageTitles]: {
+    dimensions: ['event:props:title'],
+    metricsByContext: {
+      ...COMMON_METRICS_BY_CONTEXT,
+      defaultDetailedMetrics: [
+        'visitors',
+        'percentage',
+        'visits',
+        'bounce_rate',
+        'visit_duration'
+      ]
+    },
+    detailsTitle: 'Títulos das páginas de saída',
+    detailsPath: 'exit-pages',
+    dimensionLabel: 'Título de saída',
+    alwaysOnFilters: [['is_not', 'visit:exit_page', ['']]]
   },
   [BreakdownReportKey.pages]: {
     dimensions: ['event:page'],

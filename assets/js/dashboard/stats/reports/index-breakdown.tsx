@@ -482,7 +482,7 @@ export function IndexBreakdownRenderer<TRow>({
     <div className="h-full flex flex-col opacity-100 transition-opacity duration-300 starting:opacity-0">
       <div
         style={{ height: ROW_HEIGHT }}
-        className="pt-3 w-full text-xs font-medium text-gray-500 dark:text-gray-400 flex items-center"
+        className="pt-3 w-full text-sm font-medium text-gray-500 dark:text-gray-400 flex items-center"
       >
         {columns.map((col) => (
           <div

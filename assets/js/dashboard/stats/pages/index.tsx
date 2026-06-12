@@ -44,15 +44,24 @@ export default function Pages() {
 
 function PageTitlesPanel() {
   const { dashboardState } = useDashboardStateContext()
+  const site = useSiteContext()
+
+  const storageKey = `pageTitleTab__${site.domain}`
+  const [tab, setTab] = useState<TitleTabKey>(initTitleTab(storage.getItem(storageKey)))
   const [currentData, setCurrentData] = useState<QueryApiResponse | null>(null)
 
-  const reportConfig = BREAKDOWN_REPORTS[BreakdownReportKey.pageTitles]
+  const reportConfig = BREAKDOWN_REPORTS[tab]
   const metrics = chooseBreakdownMetricsByContext(reportConfig.metricsByContext, {
     isRealtime: isRealTimeDashboard(dashboardState),
     isDetailed: false,
     hasConversionGoalFilter: hasConversionGoalFilter(dashboardState),
     isRevenueAvailable: false
   })
+
+  function switchTab(tab: TitleTabKey) {
+    storage.setItem(storageKey, tab)
+    setTab(tab)
+  }
 
   const moreLinkState = currentData
     ? currentData.results.length > 0
@@ -65,7 +74,26 @@ function PageTitlesPanel() {
       <ReportHeader>
         <div className="flex gap-x-3">
           <TabWrapper>
-            <TabButton active>{hasConversionGoalFilter(dashboardState) ? 'Páginas de conversão' : 'Páginas em Alta'}</TabButton>
+            {(
+              [
+                {
+                  label: hasConversionGoalFilter(dashboardState)
+                    ? 'Páginas de conversão'
+                    : 'Páginas em Alta',
+                  value: BreakdownReportKey.pageTitles
+                },
+                { label: 'Páginas de entrada', value: BreakdownReportKey.entryPageTitles },
+                { label: 'Páginas de saída', value: BreakdownReportKey.exitPageTitles }
+              ] as const
+            ).map(({ value, label }) => (
+              <TabButton
+                key={value}
+                active={tab === value}
+                onClick={() => switchTab(value)}
+              >
+                {label}
+              </TabButton>
+            ))}
           </TabWrapper>
           <ImportedWarningBubble queryApiResponse={currentData} />
         </div>
@@ -186,6 +214,22 @@ function PagesDimensionCell(props: DimensionCellWithBarProps) {
       {...props}
     />
   )
+}
+
+type TitleTabKey =
+  | BreakdownReportKey.pageTitles
+  | BreakdownReportKey.entryPageTitles
+  | BreakdownReportKey.exitPageTitles
+
+const initTitleTab = (storedTab: string): TitleTabKey => {
+  switch (storedTab) {
+    case BreakdownReportKey.entryPageTitles:
+      return BreakdownReportKey.entryPageTitles
+    case BreakdownReportKey.exitPageTitles:
+      return BreakdownReportKey.exitPageTitles
+    default:
+      return BreakdownReportKey.pageTitles
+  }
 }
 
 const initTab = (storedTab: string): URLTabKey => {
