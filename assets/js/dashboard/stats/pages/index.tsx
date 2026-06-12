@@ -23,10 +23,7 @@ import {
   IndexBreakdown,
   DimensionCellWithBarProps
 } from '../reports/index-breakdown'
-import {
-  chooseBreakdownMetricsByContext,
-  defaultGetFilterInfo
-} from '../breakdowns'
+import { defaultGetFilterInfo } from '../breakdowns'
 import { externalLinkForPage, trimURL } from '../../util/url'
 import { IndexExternalLink } from './external-link'
 
@@ -59,6 +56,12 @@ function PageTitlesPanel() {
   })
 
   function switchTab(tab: TitleTabKey) {
+  const metrics = reportConfig.getMetrics({
+    isRealtime: isRealTimeDashboard(dashboardState),
+    hasConversionGoalFilter: hasConversionGoalFilter(dashboardState)
+  })
+
+  function switchTab(tab: TabKey) {
     storage.setItem(storageKey, tab)
     setTab(tab)
   }
