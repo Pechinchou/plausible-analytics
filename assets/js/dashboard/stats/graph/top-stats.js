@@ -24,6 +24,14 @@ function topStatNumberLong(metric, value) {
   return formatter(value)
 }
 
+function visitorsColorClass(metric, value) {
+  if (metric !== 'visitors') return null
+  if (value >= 1700) return 'text-red-600 dark:text-red-400'
+  if (value >= 1300) return 'text-green-700 dark:text-green-500'
+  if (value > 1000) return 'text-green-500 dark:text-green-400'
+  return null
+}
+
 export default function TopStats({
   data,
   selectedMetric,
@@ -176,7 +184,10 @@ export default function TopStats({
           <div>
             <span className="flex items-baseline whitespace-nowrap">
               <p
-                className="font-semibold text-4xl text-gray-900 dark:text-gray-100"
+                className={classNames(
+                  'font-semibold text-4xl',
+                  visitorsColorClass(stat.metric, stat.value) || 'text-gray-900 dark:text-gray-100'
+                )}
                 id={
                   stat.name === 'Visitantes ativos'
                     ? 'current_visitors'
