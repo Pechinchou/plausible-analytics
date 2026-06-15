@@ -48,20 +48,12 @@ function PageTitlesPanel() {
   const [currentData, setCurrentData] = useState<QueryApiResponse | null>(null)
 
   const reportConfig = BREAKDOWN_REPORTS[tab]
-  const metrics = chooseBreakdownMetricsByContext(reportConfig.metricsByContext, {
-    isRealtime: isRealTimeDashboard(dashboardState),
-    isDetailed: false,
-    hasConversionGoalFilter: hasConversionGoalFilter(dashboardState),
-    isRevenueAvailable: false
-  })
-
-  function switchTab(tab: TitleTabKey) {
   const metrics = reportConfig.getMetrics({
     isRealtime: isRealTimeDashboard(dashboardState),
     hasConversionGoalFilter: hasConversionGoalFilter(dashboardState)
   })
 
-  function switchTab(tab: TabKey) {
+  function switchTab(tab: TitleTabKey) {
     storage.setItem(storageKey, tab)
     setTab(tab)
   }
@@ -125,11 +117,9 @@ function PageURLsPanel() {
   const reportKey = getReportKey(tab)
   const reportConfig = BREAKDOWN_REPORTS[reportKey]
 
-  const metrics = chooseBreakdownMetricsByContext(reportConfig.metricsByContext, {
+  const metrics = reportConfig.getMetrics({
     isRealtime: isRealTimeDashboard(dashboardState),
-    isDetailed: false,
-    hasConversionGoalFilter: hasConversionGoalFilter(dashboardState),
-    isRevenueAvailable: false
+    hasConversionGoalFilter: hasConversionGoalFilter(dashboardState)
   })
 
   function switchTab(tab: URLTabKey) {
