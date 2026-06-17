@@ -121,8 +121,8 @@ export const BREAKDOWN_REPORTS: Record<
 > = {
   [BreakdownReportKey.pageTitles]: {
     dimensions: ['event:props:title'],
-    metricsByContext: {
-      ...COMMON_METRICS_BY_CONTEXT,
+    getMetrics: createGetMetricsFn({
+      ...COMMON_BREAKDOWN_METRICS_BY_CONTEXT,
       defaultDetailedMetrics: [
         'visitors',
         'percentage',
@@ -130,15 +130,15 @@ export const BREAKDOWN_REPORTS: Record<
         'bounce_rate',
         'time_on_page'
       ]
-    },
+    }),
     detailsTitle: 'Títulos das páginas',
     detailsPath: 'pages',
     dimensionLabel: 'Título'
   },
   [BreakdownReportKey.entryPageTitles]: {
     dimensions: ['event:props:title'],
-    metricsByContext: {
-      ...COMMON_METRICS_BY_CONTEXT,
+    getMetrics: createGetMetricsFn({
+      ...COMMON_BREAKDOWN_METRICS_BY_CONTEXT,
       defaultDetailedMetrics: [
         'visitors',
         'percentage',
@@ -146,7 +146,7 @@ export const BREAKDOWN_REPORTS: Record<
         'bounce_rate',
         'visit_duration'
       ]
-    },
+    }),
     detailsTitle: 'Títulos das páginas de entrada',
     detailsPath: 'entry-pages',
     dimensionLabel: 'Título de entrada',
@@ -154,8 +154,8 @@ export const BREAKDOWN_REPORTS: Record<
   },
   [BreakdownReportKey.exitPageTitles]: {
     dimensions: ['event:props:title'],
-    metricsByContext: {
-      ...COMMON_METRICS_BY_CONTEXT,
+    getMetrics: createGetMetricsFn({
+      ...COMMON_BREAKDOWN_METRICS_BY_CONTEXT,
       defaultDetailedMetrics: [
         'visitors',
         'percentage',
@@ -163,7 +163,7 @@ export const BREAKDOWN_REPORTS: Record<
         'bounce_rate',
         'visit_duration'
       ]
-    },
+    }),
     detailsTitle: 'Títulos das páginas de saída',
     detailsPath: 'exit-pages',
     dimensionLabel: 'Título de saída',
