@@ -24,7 +24,8 @@ function topStatNumberLong(metric, value) {
   return formatter(value)
 }
 
-function visitorsColorClass(metric, value) {
+function visitorsColorClass(metric, value, isRealtime) {
+  if (!isRealtime) return null
   if (metric !== 'visitors') return null
   if (value >= 1700) return 'text-red-600 dark:text-red-400'
   if (value >= 1300) return 'text-green-700 dark:text-green-500'
@@ -186,7 +187,7 @@ export default function TopStats({
               <p
                 className={classNames(
                   'font-semibold text-4xl',
-                  visitorsColorClass(stat.metric, stat.value) || 'text-gray-900 dark:text-gray-100'
+                  visitorsColorClass(stat.metric, stat.value, dashboardState.period === 'realtime') || 'text-gray-900 dark:text-gray-100'
                 )}
                 id={
                   stat.name === 'Visitantes ativos'
