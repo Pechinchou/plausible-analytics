@@ -34,10 +34,10 @@ import {
   getOptionDisabledMessage,
   LabeledTextInput,
   OptionDisabledMessageType,
-  TypeDisabledMessage,
   TypeSelector
 } from '../components/form-elements'
 import { Placeholder } from '../components/placeholder'
+import { UpgradePill } from '../components/pill'
 
 const inModalSectionLabelClassName = 'text-sm font-semibold dark:text-gray-100'
 
@@ -84,13 +84,13 @@ export const CreateSegmentModal = ({
 
   const [type, setType] = useState<SegmentType>(defaultType)
 
+  const siteOptionDisabledMessage = getSiteSegmentDisabledMessage({
+    siteSegmentsAvailable,
+    user
+  })
+
   const disabledMessage =
-    type === SegmentType.site
-      ? getSiteSegmentDisabledMessage({
-          siteSegmentsAvailable,
-          user
-        })
-      : null
+    type === SegmentType.site ? siteOptionDisabledMessage : null
 
   return (
     <ModalLayout title="Criar segmento" onClose={onClose}>
@@ -103,7 +103,7 @@ export const CreateSegmentModal = ({
       <SegmentTypeSelector
         type={type}
         setType={setType}
-        optionDisabledMessage={disabledMessage}
+        siteOptionDisabledMessage={siteOptionDisabledMessage}
       />
       <ModalFooter>
         <Button theme="secondary" size="sm" onClick={onClose}>
@@ -289,38 +289,46 @@ const getSiteSegmentDisabledMessage = ({
 const SegmentTypeSelector = ({
   type,
   setType,
-  optionDisabledMessage
+  siteOptionDisabledMessage
 }: {
   type: SegmentType
   setType: (type: SegmentType) => void
-  optionDisabledMessage: OptionDisabledMessageType | null
+  siteOptionDisabledMessage: OptionDisabledMessageType | null
 }) => (
-  <>
-    <TypeSelector<SegmentType>
-      idPrefix="segment-type"
-      options={[
-        {
-          type: SegmentType.personal,
-          name: SEGMENT_TYPE_LABELS[SegmentType.personal],
-          description: 'Visível apenas para você'
-        },
-        {
-          type: SegmentType.site,
-          name: SEGMENT_TYPE_LABELS[SegmentType.site],
-          description: 'Visível para outros no site'
-        }
-      ]}
-      value={type}
-      onChange={setType}
-    />
-    {optionDisabledMessage !== null && (
-      <TypeDisabledMessage
-        message={
-          <SegmentTypeDisabledMessage messageType={optionDisabledMessage} />
-        }
-      />
-    )}
-  </>
+  <TypeSelector<SegmentType>
+    idPrefix="segment-type"
+    options={[
+      {
+        type: SegmentType.personal,
+        name: SEGMENT_TYPE_LABELS[SegmentType.personal],
+        description: 'Visível apenas para você'
+      },
+      {
+        type: SegmentType.site,
+        name: SEGMENT_TYPE_LABELS[SegmentType.site],
+        description: 'Visível para outros no site',
+        disabled: siteOptionDisabledMessage !== null,
+        pill:
+          siteOptionDisabledMessage === 'upgrade-subscription-yourself' ||
+          siteOptionDisabledMessage === 'upgrade-subscription-reach-out' ? (
+            <UpgradePill
+              plan="Upgrade necessário"
+              linked={
+                siteOptionDisabledMessage === 'upgrade-subscription-yourself'
+              }
+            />
+          ) : null,
+        tooltipContent:
+          siteOptionDisabledMessage !== null ? (
+            <SegmentTypeDisabledMessage
+              messageType={siteOptionDisabledMessage}
+            />
+          ) : null
+      }
+    ]}
+    value={type}
+    onChange={setType}
+  />
 )
 
 const SegmentTypeDisabledMessage = ({
@@ -345,7 +353,8 @@ const SegmentTypeDisabledMessage = ({
     case 'upgrade-subscription-reach-out': {
       return (
         <>
-          Para usar este tipo de segmento, entre em contato com o proprietário da equipe para fazer upgrade da assinatura
+          Para usar este tipo de segmento, entre em contato com o proprietário
+          da equipe para fazer upgrade da assinatura
         </>
       )
     }
@@ -370,13 +379,13 @@ export const UpdateSegmentModal = ({
   const [name, setName] = useState(segment.name)
   const [type, setType] = useState<SegmentType>(segment.type)
 
+  const siteOptionDisabledMessage = getSiteSegmentDisabledMessage({
+    siteSegmentsAvailable,
+    user
+  })
+
   const disabledMessage =
-    type === SegmentType.site
-      ? getSiteSegmentDisabledMessage({
-          siteSegmentsAvailable,
-          user
-        })
-      : null
+    type === SegmentType.site ? siteOptionDisabledMessage : null
 
   return (
     <ModalLayout title="Atualizar segmento" onClose={onClose}>
@@ -389,7 +398,7 @@ export const UpdateSegmentModal = ({
       <SegmentTypeSelector
         type={type}
         setType={setType}
-        optionDisabledMessage={disabledMessage}
+        siteOptionDisabledMessage={siteOptionDisabledMessage}
       />
       <ModalFooter>
         <Button theme="secondary" size="sm" onClick={onClose}>

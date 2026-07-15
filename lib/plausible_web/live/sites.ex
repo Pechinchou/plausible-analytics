@@ -6,7 +6,6 @@ defmodule PlausibleWeb.Live.Sites do
   use PlausibleWeb, :live_view
   import PlausibleWeb.Live.Components.Pagination
   import PlausibleWeb.StatsView, only: [large_number_format: 1]
-  require Logger
 
   alias Plausible.Sites
   alias Plausible.Sites.Index
@@ -573,7 +572,10 @@ defmodule PlausibleWeb.Live.Sites do
       </.unstyled_link>
 
       <div class="absolute right-1 top-3.5">
-        <.ellipsis_menu site={@site} can_manage?={List.first(@site.memberships).role != :viewer} />
+        <.ellipsis_menu
+          site={@site}
+          can_manage?={List.first(@site.memberships).role in [:owner, :admin, :editor]}
+        />
       </div>
     </li>
     """
@@ -647,15 +649,6 @@ defmodule PlausibleWeb.Live.Sites do
               class={PrimaDropdown.dropdown_item_icon_class()}
             />
             {if @site.pinned_at, do: "Desafixar site", else: "Fixar site"}
-          </PrimaDropdown.dropdown_item>
-
-          <PrimaDropdown.dropdown_item
-            :if={Application.get_env(:plausible, :environment) == "dev" and Sites.regular?(@site)}
-            id={"#{@dropdown_id}-item-3"}
-            phx-click="delete-site"
-            phx-value-domain={@site.domain}
-          >
-            <Heroicons.trash class="size-4 text-red-600" /> [DEV ONLY] Quick delete
           </PrimaDropdown.dropdown_item>
         </PrimaDropdown.dropdown_menu>
       </PrimaDropdown.dropdown>

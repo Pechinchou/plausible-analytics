@@ -743,18 +743,10 @@ case mailer_adapter do
       api_key: get_var_from_path_or_env(config_dir, "SENDGRID_API_KEY")
 
   "Bamboo.SMTPAdapter" ->
-    config :plausible, Plausible.Mailer,
-      adapter: Bamboo.SMTPAdapter,
-      server: get_var_from_path_or_env(config_dir, "SMTP_HOST_ADDR", "mail"),
-      hostname: base_url.host,
-      port: get_var_from_path_or_env(config_dir, "SMTP_HOST_PORT", "25"),
-      username: get_var_from_path_or_env(config_dir, "SMTP_USER_NAME"),
-      password: get_var_from_path_or_env(config_dir, "SMTP_USER_PWD"),
-      tls: :if_available,
-      allowed_tls_versions: [:tlsv1, :"tlsv1.1", :"tlsv1.2"],
-      ssl: get_bool_from_path_or_env(config_dir, "SMTP_HOST_SSL_ENABLED", false),
-      retries: get_var_from_path_or_env(config_dir, "SMTP_RETRIES") || 2,
-      no_mx_lookups: get_bool_from_path_or_env(config_dir, "SMTP_MX_LOOKUPS_ENABLED", true)
+    raise ArgumentError, """
+    Bamboo.SMTPAdapter is no longer supported as the adapter is no longer maintained.
+    Please switch to Bamboo.Mua instead.
+    """
 
   "Bamboo.Mua" ->
     config :plausible, Plausible.Mailer, adapter: Bamboo.Mua
@@ -846,7 +838,9 @@ cloud_cron = [
   # First sunday of the month, 4:00 UTC
   {"0 4 1-7 * SUN", Plausible.Workers.ClickhouseCleanSites},
   # Daily at 4:00 UTC
-  {"0 4 * * *", Plausible.Workers.SetLegacyTimeOnPageCutoff}
+  {"0 4 * * *", Plausible.Workers.SetLegacyTimeOnPageCutoff},
+  # Daily at 2:00 UTC
+  {"0 2 * * *", Plausible.Workers.ScoreTrialProspects}
 ]
 
 crontab = if(is_selfhost, do: base_cron, else: base_cron ++ cloud_cron)
@@ -876,7 +870,8 @@ cloud_queues = [
   lock_sites: 1,
   legacy_time_on_page_cutoff: 1,
   purge_cdn_cache: 1,
-  sso_domain_ownership_verification: 32
+  sso_domain_ownership_verification: 32,
+  score_trial_prospects: 1
 ]
 
 queues = if(is_selfhost, do: base_queues, else: base_queues ++ cloud_queues)

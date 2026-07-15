@@ -12,6 +12,9 @@ import { useGraphIntervalContext } from '../graph/graph-interval-context'
 import { createCsvExportRequestBody } from './csv-export-body'
 import * as api from '../../api'
 import { DateRange } from '../../stats-query'
+import { DashboardState } from '../../dashboard-state'
+import { hasConversionGoalFilter, hasPageFilter } from '../../util/filters'
+import { trackEvent } from '../../dogfood'
 import { Tooltip } from '../../util/tooltip'
 import { useBodyPortalRef } from '../breakdowns'
 
@@ -21,7 +24,28 @@ export enum ExportStatus {
   error = 'error'
 }
 
-export function CsvExportV2({
+function durationBucket(ms: number): string {
+  const s = ms / 1000
+  if (s >= 20) return '20s+'
+  const floor = Math.floor(s / 2) * 2
+  return `${floor}-${floor + 2}s`
+}
+
+function dogfoodTrackCsvExport(
+  isSuccess: boolean,
+  dashboardState: DashboardState,
+  startedAt: number
+): void {
+  trackEvent('csv_export', {
+    is_success: String(isSuccess),
+    goal_filter: String(hasConversionGoalFilter(dashboardState)),
+    page_filter: String(hasPageFilter(dashboardState)),
+    period: dashboardState.period,
+    duration_bucket: durationBucket(performance.now() - startedAt)
+  })
+}
+
+export function CsvExport({
   exportStatus,
   setExportStatus
 }: {
@@ -37,6 +61,7 @@ export function CsvExportV2({
   const startExport = async () => {
     if (!canStartExport) return
     setExportStatus(ExportStatus.exporting)
+    const startedAt = performance.now()
 
     try {
       const body = createCsvExportRequestBody(dashboardState, selectedInterval)
@@ -50,8 +75,10 @@ export function CsvExportV2({
       document.body.removeChild(a)
       URL.revokeObjectURL(url)
       setExportStatus(ExportStatus.idle)
+      dogfoodTrackCsvExport(true, dashboardState, startedAt)
     } catch {
       setExportStatus(ExportStatus.error)
+      dogfoodTrackCsvExport(false, dashboardState, startedAt)
     }
   }
 
@@ -64,7 +91,7 @@ export function CsvExportV2({
         !canStartExport && '!cursor-default'
       )}
     >
-      <span className="text-sm">Export stats</span>
+      <span className="text-sm">Exportar estatísticas</span>
       {exportStatus === ExportStatus.exporting ? (
         <Spinner className="animate-spin size-4 text-indigo-500" />
       ) : exportStatus === ExportStatus.error ? (
@@ -79,7 +106,7 @@ export function CsvExportV2({
 function ExportFailedBubble() {
   const portalRef = useBodyPortalRef()
   return (
-    <Tooltip info={'Export failed'} containerRef={portalRef}>
+    <Tooltip info={'Falha na exportação'} containerRef={portalRef}>
       <ExclamationCircleIcon
         data-testid="export-error-icon"
         className="size-4 text-gray-500 dark:text-gray-400"
